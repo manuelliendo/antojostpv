@@ -1,10 +1,15 @@
 package antojotTPV;
 
+import javax.swing.JFrame;
+
 public class main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("prueba");
+		
+		Ventana prueba = new Ventana();
+		prueba.setSize(680, 660);
+		prueba.setVisible(true);
+		prueba.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
