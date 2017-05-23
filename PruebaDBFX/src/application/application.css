@@ -1,0 +1,35 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*Login */
+#LoginBackground{
+	-fx-background-image: url("../img/loginbg.jpg");
+	-fx-background-size: stretch ;
+}
+#LoginFrame{
+	-fx-background-color: gray;
+	-fx-opacity: 0.75 ;	
+}
+#textFieldUsuario,#textFieldPassword{
+	-fx-background-color: rgb(20,141,204);
+	-fx-prompt-text-fill: black ;
+	-fx-opacity: 1 ; 
+}
+#textFieldUsuario:hover,#textFieldPassword:hover{
+	-fx-background-color: rgb(60,161,224);
+	-fx-prompt-text-fill: black ;
+	-fx-opacity: 1 ; 
+}
+
+#btnLogin{
+	-fx-background-color: rgb(255,51,68);
+	-fx-opacity: 1 ;
+}
+#btnLogin:hover,#btnLogin:selected{
+	-fx-background-color: rgb(255,81,98);
+	-fx-opacity: 1 ;
+}
+#labelAcceder{
+	
+	
+}
+
+/*--------------------------------------------------- */
