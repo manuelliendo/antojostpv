@@ -11,7 +11,7 @@ public class ConnectionDB {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			conn = DriverManager
-					.getConnection("jdbc:sqlite:C:\\Users\\Manuel\\workspace\\PruebaDBFX\\prueba.sqlite");
+					.getConnection("jdbc:sqlite:C:\\Users\\Manuel\\git\\PruebaDBFX\\prueba.sqlite");
 			return conn;
 		} catch (Exception e) {
 			System.out.println(e);

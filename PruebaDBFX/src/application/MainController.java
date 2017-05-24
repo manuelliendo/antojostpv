@@ -50,7 +50,6 @@ public class MainController implements Initializable {
 			{
 				UsuarioExiste = true;
 				acceso = rs.getInt("Acceso_id");
-				System.out.println(acceso);
 			}
 			if(UsuarioExiste)
 			{

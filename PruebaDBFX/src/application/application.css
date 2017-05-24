@@ -28,8 +28,13 @@
 	-fx-opacity: 1 ;
 }
 #labelAcceder{
-	
-	
+		
 }
 
 /*--------------------------------------------------- */
+/*PEDIDOS */
+#listviewPedidos{
+	-fx-background-color: red ;
+}
+
+
