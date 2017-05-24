@@ -39,6 +39,8 @@ public class MainMenuController implements Initializable {
 	TableView<String> tableViewPedido = new TableView<String>();
 	ObservableList<Integer> countCategorias = FXCollections
 			.observableArrayList();
+	ObservableList<Integer> IdCategorias = FXCollections
+			.observableArrayList();
 	ObservableList<Image> imgCategorias = FXCollections.observableArrayList();
 	ObservableList<String> nombreCategorias = FXCollections
 			.observableArrayList();
@@ -53,7 +55,7 @@ public class MainMenuController implements Initializable {
 	PreparedStatement pst = null;
 	static InputStream is;
 	int aux = 0;
-	String Categoria = "";
+	int Categoria = 1;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -67,8 +69,11 @@ public class MainMenuController implements Initializable {
 
 	public void populateCategorias() {
 
-		String query = "SELECT Imagen,Nombre FROM Categorias ";
-
+		pst = null;
+		rs = null;
+		conn = null;
+		conn = ConnectionDB.Conectar();
+		String query = "SELECT Imagen,Nombre,Id FROM Categorias ";
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
@@ -77,6 +82,7 @@ public class MainMenuController implements Initializable {
 
 				is = rs.getBinaryStream("Imagen");
 				imgCategorias.add(new Image(is));
+				IdCategorias.add(rs.getInt("Id"));
 				nombreCategorias.add(rs.getString("Nombre"));
 				countCategorias.add(aux);
 				aux++;
@@ -110,19 +116,19 @@ public class MainMenuController implements Initializable {
 						public void changed(
 								ObservableValue<? extends Integer> observable,
 								Integer oldValue, Integer newValue) {
-							Categoria = nombreCategorias.get(newValue);
-
+							Categoria = IdCategorias.get(newValue);
+							populateProductos();
 						}
 					});
 
 		} catch (Exception e) {
-			System.out.println(e);
+			System.err.println(e);
 		} finally {
 			try {
 				rs.close();
 				pst.close();
 			} catch (Exception e2) {
-				System.out.println(e2);
+				System.err.println(e2);
 
 			}
 		}
@@ -130,15 +136,26 @@ public class MainMenuController implements Initializable {
 	}
 
 	public void populateProductos() {
-		String query2 = "SELECT Productos.Imagen, Productos.Nombre, Productos.Precio "+
-" FROM Productos INNER JOIN Categorias ON Productos.Categoria_id = 1 ";
-//		String query = "SELECT Imagen,Nombre,Precio FROM Productos WHERE";
+		pst = null;
+		rs = null;
+		conn = null;
+		conn = ConnectionDB.Conectar();
+		String query2 = "SELECT Categorias.Nombre,Productos.Precio,Productos.Imagen  FROM Productos "
+				+ "INNER JOIN Categorias  ON Productos.Categoria_id=Categorias.Id AND Productos.Categoria_id=?";
+		// String query = "SELECT Imagen,Nombre,Precio FROM Productos WHERE";
 
 		try {
+			if (tilePaneproductos.getChildren().size() > 0) {
+				tilePaneproductos.getChildren().clear();
+				imgProductos.clear();
+			}
+			// System.out.println("pst: " +pst.isClosed());
+			// System.out.println("rs: " +rs.isClosed());
+			// System.out.println("conn: " +conn.isClosed());
 			pst = conn.prepareStatement(query2);
-			
+			pst.setString(1, String.valueOf(Categoria));
 			rs = pst.executeQuery();
-			System.out.println("Empieza populateproductos");
+
 			while (rs.next()) {
 				if (rs.getBinaryStream("Imagen") == null) {
 					imgProductos.add(new ImageView(new Image(
@@ -148,20 +165,25 @@ public class MainMenuController implements Initializable {
 					imgProductos.add(new ImageView(new Image(is, 100, 100,
 							true, true)));
 				}
-
+				// System.out.println("Recibe datos");
+				// System.out.println("pst: " +pst.isClosed());
+				// System.out.println("rs: " +rs.isClosed());
+				// System.out.println("conn: " +conn.isClosed());
 			}
+
 			for (int i = 0; i < imgProductos.size(); i++) {
 				tilePaneproductos.getChildren().add(imgProductos.get(i));
 			}
+
 		} catch (Exception e) {
 			System.err.println(e);
 			// TODO: handle exception
 		} finally {
 			try {
-				rs.close();
-				pst.close();
+				// rs.close();
+				// pst.close();
 			} catch (Exception e2) {
-				System.out.println(e2);
+				System.err.println(e2);
 
 			}
 		}
