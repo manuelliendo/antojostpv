@@ -61,6 +61,7 @@ public class MainController implements Initializable {
 				Scene scene = new Scene(root,width,height-50);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
+				primaryStage.setMaximized(true);
 				primaryStage.show();
 				Stage stage = (Stage) textFieldUsuario.getScene().getWindow();
 			    stage.close();
