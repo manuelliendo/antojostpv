@@ -12,6 +12,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnOk" layoutX="122.0" layoutY="90.0" mnemonicParsing="false" onAction="#btnOkPressed" prefHeight="25.0" prefWidth="58.0" text="OK" />
+      <Button fx:id="btnOk" layoutX="122.0" layoutY="90.0" mnemonicParsing="false" onAction="#btnOkPressed" onKeyPressed="#btnOkPressed" prefHeight="25.0" prefWidth="58.0" text="OK" />
    </children>
 </AnchorPane>

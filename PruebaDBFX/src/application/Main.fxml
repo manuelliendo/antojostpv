@@ -40,7 +40,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="110.0" layoutY="228.0" prefHeight="60.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="320.0">
                <children>
-                  <PasswordField fx:id="textFieldPassword" prefHeight="40.0" prefWidth="490.0" promptText="Contraseña">
+                  <PasswordField fx:id="textFieldPassword" onAction="#Login" prefHeight="40.0" prefWidth="490.0" promptText="Contraseña">
                      <font>
                         <Font size="18.0" />
                      </font>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FacturaController">
+   <children>
+      <Label layoutX="84.0" layoutY="66.0" text="NIT/CI: " />
+      <Label layoutX="84.0" layoutY="98.0" text="SEÑOR(ES): " />
+      <TextField fx:id="nit" layoutX="268.0" layoutY="62.0" />
+      <TextField fx:id="nombre" layoutX="268.0" layoutY="94.0" />
+      <TableView fx:id="ordenTotal" layoutX="84.0" layoutY="148.0" prefHeight="175.0" prefWidth="333.0">
+        <columns>
+          <TableColumn fx:id="columnProducto" prefWidth="160.0" text="Producto" />
+          <TableColumn fx:id="columnEspecial" minWidth="0.0" prefWidth="172.0" text="Pedido especial" />
+        </columns>
+      </TableView>
+      <Label layoutX="84.0" layoutY="362.0" text="TOTAL:" />
+      <Label fx:id="total" layoutX="377.0" layoutY="362.0" text="0.00 Bs." />
+      <Label layoutX="84.0" layoutY="399.0" text="MONTO PAGADO:" />
+      <TextField fx:id="montoPagado" layoutX="268.0" layoutY="395.0" onAction="#getCambio" />
+      <Label layoutX="80.0" layoutY="439.0" text="CAMBIO:" />
+      <Label fx:id="cambio" layoutX="377.0" layoutY="439.0" text="0.00 Bs." />
+      <Button layoutX="310.0" layoutY="492.0" mnemonicParsing="false" onAction="#emitirFactura" text="EMITIR FACTURA" />
+   </children>
+</AnchorPane>

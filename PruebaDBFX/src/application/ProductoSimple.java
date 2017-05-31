@@ -1,36 +1,21 @@
 package application;
 
-
 import java.io.Serializable;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Producto{
-
-//	private Integer id;
+public class ProductoSimple implements Serializable{
 	private String nombre = "";
-	private ImageView imagen = null;
 	private Float precio = null;
 	private Integer cantidad=1;
 	private Float precioTotal = null;
 	private String especial = "";
 	
-	
-	public Producto(String nombre, ImageView imagen, Float precio) {
-		
+	public ProductoSimple(String nombre, Float precio) {
+		super();
 //		this.id = id;
 		this.nombre = nombre;
-		this.imagen = imagen;
-		this.precio = precio;
-		
-	}
-	public Producto(String nombre, Float precio) {
-		
-//		this.id = id;
-		this.nombre = nombre;
-		this.imagen = new ImageView(new Image(
-				"img/logoAntojos5.jpg", 100, 100, true, true));
 		this.precio = precio;
 		
 	}
@@ -53,12 +38,7 @@ public class Producto{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public ImageView getImagen() {
-		return imagen;
-	}
-	public void setImagen(ImageView imagen) {
-		this.imagen = imagen;
-	}
+
 	public Float getPrecio() {
 		return precio;
 	}
@@ -76,6 +56,4 @@ public class Producto{
 	public void resetCantidad(){
 		cantidad = 1;
 	}
-	
 }
-

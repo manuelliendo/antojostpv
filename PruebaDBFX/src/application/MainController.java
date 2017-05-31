@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Dimension;
+import java.awt.RenderingHints.Key;
 import java.awt.Toolkit;
 import java.net.URL;
 import java.sql.Connection;
@@ -11,12 +12,14 @@ import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
@@ -34,9 +37,9 @@ public class MainController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		conn = ConnectionDB.Conectar();
-
 	}
 
+	@FXML
 	public void Login(ActionEvent event) {
 //		String query2 = "SELECT * FROM Usuarios";
 		String query = "SELECT Usuario,Password,Acceso_id FROM Usuarios WHERE (Usuario=? and Password=?)";
