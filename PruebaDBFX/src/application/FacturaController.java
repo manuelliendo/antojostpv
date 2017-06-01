@@ -24,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class FacturaController implements Initializable {
 
@@ -49,7 +50,7 @@ public class FacturaController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 		try {
 			read();
 		} catch (ClassNotFoundException | IOException e) {
@@ -72,17 +73,31 @@ public class FacturaController implements Initializable {
 		total.setText(String.valueOf(auxCuenta) + "Bs.");
 	}
 
+	public void getNit(){
+		//TODO buscar en base de datos usuario con el nit, sino insert en la bd
+	}
 	
 	public void emitirFactura() {
-
+		// TODO: imprimir factura 
+		// TODO: facturacion electronica
+		// TODO: subir a base de datos
+		System.out.println("Factura emitida");
+		Stage stage = (Stage) nit.getScene().getWindow();
+		orden.clear();
+	    stage.close();;
 	}
 
 	public void getCambio(){
 		Float auxMonto;
-		auxMonto = Float.valueOf(montoPagado.getText());
+		if(montoPagado.getText().isEmpty())
+		{
+			auxMonto = (float)0;
+		}else{
+			auxMonto = Float.valueOf(montoPagado.getText());
+		}
 		auxCambio = auxMonto - auxCuenta;
 		
-		cambio.setText(String.valueOf(auxCambio));
+		cambio.setText(String.valueOf(auxCambio) + "Bs.");
 	}
 	public void read() throws IOException, ClassNotFoundException {
 		FileInputStream fin;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -10,39 +11,67 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
    <children>
-      <HBox alignment="CENTER" layoutX="145.0" layoutY="348.0" prefHeight="32.0" prefWidth="200.0">
+      <HBox fx:id="ordenBox" alignment="CENTER" layoutX="490.0" layoutY="290.0" prefHeight="40.0" prefWidth="530.0" AnchorPane.rightAnchor="80.0">
          <children>
-            <RadioButton fx:id="radioButtonLocal" mnemonicParsing="false" text="Local">
+            <RadioButton fx:id="radioButtonLocal" mnemonicParsing="false" text="LOCAL">
                <toggleGroup>
                   <ToggleGroup fx:id="group" />
-               </toggleGroup></RadioButton>
-            <RadioButton fx:id="radioButtonDelivery" mnemonicParsing="false" text="Para llevar" toggleGroup="$group" />
+               </toggleGroup>
+               <HBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </HBox.margin></RadioButton>
+            <RadioButton fx:id="radioButtonDelivery" mnemonicParsing="false" text="PARA LLEVAR" toggleGroup="$group">
+               <HBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </HBox.margin></RadioButton>
          </children>
       </HBox>
-      <ListView fx:id="listViewCategorias" layoutX="70.0" layoutY="83.0" prefHeight="250.0" prefWidth="350.0" />
-      <TableView fx:id="tableViewPedido" layoutX="554.0" layoutY="364.0" prefHeight="200.0" prefWidth="386.0">
+      <ListView id="listViewCategorias" fx:id="listViewCategorias" layoutX="37.0" layoutY="50.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="280.0" prefWidth="430.0" AnchorPane.leftAnchor="80.0" />
+      <TableView id="tableviewPedidoTotal" fx:id="tableViewPedido" layoutX="490.0" layoutY="345.0" prefHeight="200.0" prefWidth="530.0" AnchorPane.rightAnchor="80.0">
         <columns>
-          <TableColumn fx:id="prod" prefWidth="75.0" text="Producto" />
-          <TableColumn fx:id="cant" prefWidth="75.0" text="Cantidad" />
-            <TableColumn fx:id="precioUnit" prefWidth="75.0" text="Precio unit" />
-            <TableColumn fx:id="precioTotal" prefWidth="75.0" text="Precio total" />
+          <TableColumn fx:id="prod" prefWidth="136.0" text="PRODUCTO" />
+          <TableColumn fx:id="cant" prefWidth="131.0" text="CANTIDAD" />
+            <TableColumn fx:id="precioUnit" prefWidth="134.0" text="PRECIO UNIT" />
+            <TableColumn fx:id="precioTotal" prefWidth="128.0" text="PRECIO TOTAL" />
         </columns>
       </TableView>
-      <Button layoutX="738.0" layoutY="626.0" mnemonicParsing="false" onAction="#btnDeshacerPressed" prefHeight="25.0" prefWidth="52.0" text="X" />
-      <Button layoutX="866.0" layoutY="626.0" mnemonicParsing="false" onAction="#btnOkPressed" text="Ok" />
-      <TilePane fx:id="tilePaneproductos" layoutX="583.0" layoutY="92.0" prefHeight="243.0" prefWidth="328.0" />
-      <Label fx:id="total" layoutX="868.0" layoutY="577.0" text="0.00 Bs" />
-      <Label layoutX="145.0" layoutY="409.0" text="Pedido especial" />
-      <Label layoutX="70.0" layoutY="53.0" text="Categorias" />
-      <Label layoutX="583.0" layoutY="53.0" text="Productos" />
-      <Label layoutX="790.0" layoutY="577.0" text="Total:" />
-      <TableView fx:id="tableViewPedidoEspecial" layoutX="145.0" layoutY="426.0" prefHeight="200.0" prefWidth="200.0">
+      <Button fx:id="btnDeshacer" layoutX="809.0" layoutY="607.0" mnemonicParsing="false" onAction="#btnDeshacerPressed" prefHeight="40.0" prefWidth="83.0" text="X" AnchorPane.rightAnchor="190.0">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btnOk" layoutX="944.0" layoutY="607.0" mnemonicParsing="false" onAction="#btnOkPressed" prefHeight="40.0" prefWidth="76.0" text="Ok" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <TilePane fx:id="tilePaneproductos" layoutX="489.0" layoutY="50.0" prefHeight="220.0" prefWidth="530.0" AnchorPane.rightAnchor="80.0" />
+      <Label fx:id="total" layoutX="944.0" layoutY="561.0" text="0.00 Bs" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label id="labelPedidoEspecial" alignment="CENTER" layoutX="37.0" layoutY="345.0" prefHeight="20.0" prefWidth="430.0" text="PEDIDO ESPECIAL" AnchorPane.leftAnchor="80.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="labelCategorias" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="15.0" prefHeight="25.0" prefWidth="430.0" text="CATEGORIAS" AnchorPane.leftAnchor="80.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label id="labelProductos" alignment="CENTER" contentDisplay="CENTER" layoutX="490.0" layoutY="15.0" prefHeight="25.0" prefWidth="530.0" text="PRODUCTOS" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="834.0" layoutY="561.0" text="Total:" AnchorPane.rightAnchor="190.0">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <TableView id="tableviewPedidoEspecial" fx:id="tableViewPedidoEspecial" layoutX="80.0" layoutY="391.0" prefHeight="170.0" prefWidth="430.0" AnchorPane.leftAnchor="80.0">
         <columns>
-          <TableColumn fx:id="prodEspecial" editable="false" prefWidth="104.0" text="Prod." />
-          <TableColumn fx:id="pedidoEspecial" prefWidth="95.0" text="Pedido" />
+          <TableColumn fx:id="prodEspecial" editable="false" prefWidth="200.0" text="PRODUCTO" />
+          <TableColumn fx:id="pedidoEspecial" prefWidth="229.0" text="PEDIDO ESPECIAL" />
         </columns>
       </TableView>
    </children>

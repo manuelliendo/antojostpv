@@ -19,7 +19,7 @@ public class Categoria {
 		super();
 		Nombre = nombre;
 		this.id = id;
-		this.imagen = new Image("img/logoAntojos5.jpg", 100, 100, true, true);
+		this.imagen = new Image("img/logoAntojos5.jpg", 200, 100, true, true);
 		this.count = count;
 	}
 	
