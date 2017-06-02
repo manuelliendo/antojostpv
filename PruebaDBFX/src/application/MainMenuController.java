@@ -1,6 +1,8 @@
 package application;
 
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,6 +19,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +42,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -143,12 +147,17 @@ public class MainMenuController implements Initializable {
 									imageview.setImage(categorias.get(
 											name.getCount()).getImagen());
 
+									HBox.setHgrow(box, Priority.ALWAYS);
 									box.getChildren().addAll(imageview,label);
 									box.setAlignment(Pos.CENTER_LEFT);
 									box.setId("boxCategoria");
+									box.autosize();
+									label.autosize();
+									imageview.autosize();
 									label.setId("labelCategoria");
 									setText(null);
 									setGraphic(box);
+									
 								}
 								
 							}
@@ -267,7 +276,7 @@ public class MainMenuController implements Initializable {
 					Boolean oldValue, Boolean newValue) {
 				// TODO Auto-generated method stub
 				if (newValue == false) {
-					btnDeshacerPressed();
+					btnDeshacerPressed(new ActionEvent());
 				}
 
 			}
@@ -336,7 +345,7 @@ public class MainMenuController implements Initializable {
 
 	}
 
-	public void btnDeshacerPressed() {
+	public void btnDeshacerPressed(ActionEvent event) {
 		for (int i = 0; i < orden.size(); i++) {
 			orden.get(i).resetCantidad();
 		}
@@ -346,18 +355,36 @@ public class MainMenuController implements Initializable {
 
 	}
 
-	public void btnOkPressed() throws IOException {
+	public void btnOkPressed(ActionEvent event) throws IOException {
 
 		write();
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/Factura.fxml"));
-		Scene scene = new Scene(root, 500, 600);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, (width/2.5), (height/1.5));
 		scene.getStylesheets().add(
 				getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	public void btnProductosPressed (ActionEvent event) throws IOException {
+		
+		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/ProductosWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
+
 
 	public void write() throws IOException {
 		FileOutputStream fout = null;

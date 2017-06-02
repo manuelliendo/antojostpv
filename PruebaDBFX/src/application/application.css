@@ -35,7 +35,8 @@
 /*PEDIDOS */
 
 #listViewCategorias{
-	-fx-background-color: rgb(128.0,24.0,21.0);
+	/*-fx-background-color: rgb(128.0,24.0,21.0);*/
+	-fx-border-color: rgb(128.0,24.0,21.0);
 	-fx-border-width: 1.0px;
 	-fx-font-size: 16.0pt;
 	-fx-font-weight:bold;
@@ -83,7 +84,7 @@
 }
 #labelProductos{
 	-fx-border-color: rgb(128.0,24.0,21.0);
-	-fx-border-width: 3.0px;
+	-fx-border-width: 3.0px 3px 1px 3px;
 	-fx-background-color: rgb(27.0,127.0,178.0);
 	-fx-text-fill: white;	
 }

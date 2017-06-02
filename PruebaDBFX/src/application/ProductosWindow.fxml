@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="140.0" prefWidth="226.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="application.ProductosWindowController">
+   <children>
+      <Label fx:id="label" layoutX="85.0" layoutY="53.0" text="PRODUCTOS" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnPedidosPressed" text="PEDIDOS" />
+      <Button layoutX="85.0" layoutY="14.0" mnemonicParsing="false" text="PRODUCTOS" />
+   </children>
+</AnchorPane>
