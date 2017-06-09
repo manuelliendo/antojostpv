@@ -382,6 +382,7 @@ public class MainMenuController implements Initializable {
 		scene.getStylesheets().add(
 				getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
+		stage.setMaximized(true);
 		stage.show();
 	}
 

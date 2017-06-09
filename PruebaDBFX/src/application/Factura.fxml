@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FacturaController">
+<AnchorPane id="anchorPaneFactura" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FacturaController">
    <children>
-      <VBox alignment="CENTER" layoutX="200.0" layoutY="200.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+      <VBox id="vBoxFactura" alignment="CENTER" layoutX="200.0" layoutY="200.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
                <children>
@@ -32,7 +32,7 @@
                   </TextField>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets top="10.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
@@ -69,15 +69,15 @@
             </TableView>
             <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
                <children>
-                  <Label text="TOTAL:">
+                  <Label text="TOTAL:" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets left="40.0" />
+                        <Insets />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="total" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="0.00 Bs.">
+                  <Label fx:id="total" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="0.00 Bs." HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="250.0" />
                      </HBox.margin>
@@ -92,25 +92,25 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
                <children>
-                  <Label text="MONTO PAGADO:">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="105.0" text="MONTO PAGADO:" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets left="40.0" />
+                        <Insets left="60.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="montoPagado" onAction="#getCambio" onKeyReleased="#getCambio" prefHeight="25.0" prefWidth="64.0">
+                  <TextField fx:id="montoPagado" onAction="#getCambio" onKeyReleased="#getCambio" prefHeight="25.0" prefWidth="64.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets left="160.0" />
+                        <Insets left="135.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </TextField>
-                  <Label text="Bs.">
+                  <Label text="Bs." HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets left="5.0" />
+                        <Insets left="5.0" right="60.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -123,15 +123,15 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
                <children>
-                  <Label text="CAMBIO:">
+                  <Label text="CAMBIO:" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets left="40.0" />
+                        <Insets />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="cambio" text="0.00 Bs.">
+                  <Label fx:id="cambio" text="0.00 Bs." HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="245.0" />
                      </HBox.margin>
@@ -146,7 +146,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#emitirFactura" onKeyPressed="#emitirFactura" prefHeight="50.0" prefWidth="154.0" text="EMITIR FACTURA">
+                  <Button id="btnFactura" mnemonicParsing="false" onAction="#emitirFactura" onKeyPressed="#emitirFactura" prefHeight="50.0" prefWidth="154.0" text="EMITIR FACTURA">
                      <HBox.margin>
                         <Insets right="65.0" />
                      </HBox.margin>
@@ -156,7 +156,7 @@
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets top="40.0" />
+                  <Insets bottom="10.0" top="40.0" />
                </VBox.margin>
             </HBox>
          </children>

@@ -61,11 +61,10 @@ public class MainController implements Initializable {
 				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 				double width = screenSize.getWidth();
 				double height = screenSize.getHeight();
-//				Scene scene = new Scene(root,width,height-50);
-				Scene scene = new Scene(root,800,600);
+				Scene scene = new Scene(root,width,height-50);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
-//				primaryStage.setMaximized(true);
+				primaryStage.setMaximized(true);
 				primaryStage.show();
 				Stage stage = (Stage) textFieldUsuario.getScene().getWindow();
 			    stage.close();

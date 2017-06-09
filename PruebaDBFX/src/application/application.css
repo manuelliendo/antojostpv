@@ -102,10 +102,12 @@
 	-fx-border-color: rgb(128.0,24.0,21.0);
 	-fx-font-size: 12.0pt;
 }
-#tableviewPedidoTotal .column-header ,#tableviewPedidoEspecial .column-header{
+#tableviewPedidoTotal .column-header ,#tableviewPedidoEspecial .column-header, #ordenTotal .column-header {
 	-fx-background-color: rgb(168.0,47.0,22.0);
+	-fx-border-width: 1px;
+	-fx-border-color:  rgb(128.0,24.0,21.0);
 }
-#tableviewPedidoTotal .column-header .label, #tableviewPedidoEspecial .column-header .label{
+#tableviewPedidoTotal .column-header .label, #tableviewPedidoEspecial .column-header .label,#ordenTotal .column-header .label{
 	-fx-text-fill: white;
 }
 
@@ -125,4 +127,16 @@
 #root{
 		-fx-background-color: whitesmoke ;
 }
-
+/*Factura */
+#anchorPaneFactura{
+	-fx-background-color: white;
+}
+#vBoxFactura{
+	-fx-background-color: whitesmoke !important;
+}
+#btnFactura{
+	-fx-background-color: rgb(0.0,255.0,0.0);
+}
+#btnFactura:hover{
+	-fx-background-color: rgb(85.0,255.0,85.0);
+}
