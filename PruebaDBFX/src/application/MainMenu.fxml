@@ -20,6 +20,7 @@
          <children>
             <Button mnemonicParsing="false" text="PEDIDOS" HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#btnProductosPressed" text="PRODUCTOS" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#btnConfigPressed" text="CONFIGURACION" HBox.hgrow="ALWAYS" />
          </children>
          <opaqueInsets>
             <Insets />

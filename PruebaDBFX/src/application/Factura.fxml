@@ -25,7 +25,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nit" HBox.hgrow="ALWAYS">
+                  <TextField fx:id="textFieldNit" onAction="#getNit" onKeyTyped="#getNit" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="150.0" right="50.0" />
                      </HBox.margin>
@@ -45,7 +45,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nombre" HBox.hgrow="ALWAYS">
+                  <TextField fx:id="textfieldNombre" promptText="RAZON SOCIAL" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="126.0" right="50.0" />
                      </HBox.margin>
@@ -55,10 +55,10 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="ordenTotal" prefHeight="175.0" prefWidth="333.0">
+            <TableView fx:id="tableViewOrdenTotal" prefHeight="175.0" prefWidth="333.0">
               <columns>
-                <TableColumn fx:id="columnProducto" minWidth="100.0" prefWidth="214.0" text="Producto" />
-                <TableColumn fx:id="columnEspecial" minWidth="100.0" prefWidth="225.0" text="Pedido especial" />
+                <TableColumn fx:id="tableColumnProducto" minWidth="100.0" prefWidth="214.0" text="Producto" />
+                <TableColumn fx:id="tableColumnEspecial" minWidth="100.0" prefWidth="225.0" text="Pedido especial" />
               </columns>
                <VBox.margin>
                   <Insets left="50.0" right="50.0" top="30.0" />
@@ -77,13 +77,21 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="total" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="0.00 Bs." HBox.hgrow="ALWAYS">
+                  <Label fx:id="labelTotal" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="0.00" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="250.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                  </Label>
+                  <Label text="Bs.">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </Label>
                </children>
                <VBox.margin>
@@ -100,7 +108,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="montoPagado" onAction="#getCambio" onKeyReleased="#getCambio" prefHeight="25.0" prefWidth="64.0" HBox.hgrow="ALWAYS">
+                  <TextField fx:id="textFieldMontoPagado" onAction="#getCambio" onKeyReleased="#getCambio" prefHeight="25.0" prefWidth="64.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="135.0" />
                      </HBox.margin>
@@ -131,13 +139,21 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="cambio" text="0.00 Bs." HBox.hgrow="ALWAYS">
+                  <Label fx:id="labelCambio" text="0.00" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="245.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                  </Label>
+                  <Label text="Bs.">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </Label>
                </children>
                <VBox.margin>

@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
+/*MAIN ANTOJOS TPV*/
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {

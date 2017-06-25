@@ -47,6 +47,8 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/*CONTROLADOR DE LA VENTANA PEDIDOS*/
+
 public class MainMenuController implements Initializable {
 
 	@FXML
@@ -307,7 +309,7 @@ public class MainMenuController implements Initializable {
 			}
 
 		}
-		total.setText(String.valueOf(auxtotal) + " Bs.");
+		total.setText(String.valueOf(auxtotal));
 		prod.setCellValueFactory(new PropertyValueFactory<ProductoSimple, String>(
 				"Nombre"));
 		cant.setCellValueFactory(new PropertyValueFactory<ProductoSimple, Integer>(
@@ -351,7 +353,7 @@ public class MainMenuController implements Initializable {
 		}
 		orden.clear();
 		tableViewPedido.refresh();
-		total.setText("0 Bs.");
+		total.setText("0");
 
 	}
 
@@ -386,7 +388,21 @@ public class MainMenuController implements Initializable {
 		stage.show();
 	}
 
-
+	public void btnConfigPressed (ActionEvent event) throws IOException{
+		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/ConfigWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.setMaximized(true);
+		stage.show();
+	}
+	
 	public void write() throws IOException {
 		FileOutputStream fout = null;
 		ObjectOutputStream oos = null;
