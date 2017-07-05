@@ -20,8 +20,6 @@ import javafx.collections.ObservableList;
 
 import javax.imageio.ImageIO;
 
-import org.omg.CORBA.IMP_LIMIT;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -32,15 +30,16 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.TabSettings;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.Image;
+
 
 /*ESTA CLASE GENERA LA FACTURA EN PDF*/
 
-public class EmisionFactura {
+public class EmisionFactura{
 
 	static ObservableList<String> lista = FXCollections.observableArrayList();
 	static ObservableList<ProductoSimple> orden = FXCollections.observableArrayList();
@@ -603,4 +602,5 @@ public class EmisionFactura {
 
 	}
 
+	
 }

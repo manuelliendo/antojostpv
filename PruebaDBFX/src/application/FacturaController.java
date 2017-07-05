@@ -26,6 +26,9 @@ import javafx.stage.Stage;
 
 import com.google.zxing.WriterException;
 
+
+
+
 /*CONTROLADOR DE VENTANA DE EMISION DE FACTURA*/
 public class FacturaController implements Initializable {
 

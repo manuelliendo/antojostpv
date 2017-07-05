@@ -1,7 +1,6 @@
 package application;
 
 import java.awt.Dimension;
-
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,13 +29,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ProductosWindowController implements Initializable{
+public class ProductosWindowController implements Initializable {
 
 	@FXML
 	Label label = new Label();
@@ -46,7 +46,9 @@ public class ProductosWindowController implements Initializable{
 	TilePane tilePaneproductos = new TilePane();
 	@FXML
 	TableView<Producto> receta;
-	
+	@FXML
+	AnchorPane root;
+
 	ObservableList<Categoria> categorias = FXCollections.observableArrayList();
 	ObservableList<Producto> productos = FXCollections.observableArrayList();
 	ObservableList<ProductoSimple> orden = FXCollections.observableArrayList();
@@ -57,7 +59,7 @@ public class ProductosWindowController implements Initializable{
 	InputStream is;
 	int aux = 0;
 	int Categoria = 1;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		conn = ConnectionDB.Conectar();
@@ -65,13 +67,15 @@ public class ProductosWindowController implements Initializable{
 		populateProductos();
 		
 	}
-	
+
 	public void populateCategorias() {
 
 		pst = null;
 		rs = null;
 		conn = null;
 		conn = ConnectionDB.Conectar();
+		categorias.clear();
+		aux = 0;
 		String query = "SELECT Imagen,Nombre,Id FROM Categorias ";
 		try {
 			pst = conn.prepareStatement(query);
@@ -117,7 +121,7 @@ public class ProductosWindowController implements Initializable{
 											name.getCount()).getImagen());
 
 									HBox.setHgrow(box, Priority.ALWAYS);
-									box.getChildren().addAll(imageview,label);
+									box.getChildren().addAll(imageview, label);
 									box.setAlignment(Pos.CENTER_LEFT);
 									box.setId("boxCategoria");
 									box.autosize();
@@ -126,7 +130,7 @@ public class ProductosWindowController implements Initializable{
 									label.setId("labelCategoria");
 									setText(null);
 									setGraphic(box);
-									
+
 								}
 								
 							}
@@ -157,11 +161,12 @@ public class ProductosWindowController implements Initializable{
 		}
 
 	}
-	
+
 	public void populateProductos() {
 		pst = null;
 		rs = null;
 		conn = null;
+		productos.clear();
 		conn = ConnectionDB.Conectar();
 		String query2 = "SELECT Productos.Nombre,Productos.Precio,Productos.Imagen  FROM Productos "
 				+ "INNER JOIN Categorias  ON Productos.Categoria_id=Categorias.Id AND Productos.Categoria_id=?";
@@ -233,18 +238,123 @@ public class ProductosWindowController implements Initializable{
 		}
 	}
 
-	public void btnPedidosPressed(ActionEvent event) throws IOException{
-		Stage primaryStage = (Stage)label.getScene().getWindow();
+	public void btnPedidosPressed(ActionEvent event) throws IOException {
+		Stage primaryStage = (Stage) label.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/MainMenu.fxml"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
-		Scene scene = new Scene(root, width, height-50);
+		Scene scene = new Scene(root, width, height - 50);
 		scene.getStylesheets().add(
 				getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setMaximized(true);
 		primaryStage.show();
 	}
+	public void btnConfigPressed (ActionEvent event) throws IOException{
+		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/ConfigWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.setMaximized(true);
+		stage.show();
+	}
+
+	public void agregarCategoriaBtnPressed(ActionEvent event) throws IOException {
+
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/AddCategoriaWindow.fxml"));
+		Scene scene = new Scene(root, 300, 400);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	public void btnInventarioPressed(ActionEvent event) throws IOException{
+		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/InventarioWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.setMaximized(true);
+		stage.show();
+	}
+	public void editarCategoriaBtnPressed(ActionEvent event) throws IOException {
+
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/EditCategoriaWindow.fxml"));
+		Scene scene = new Scene(root, 300, 400);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+		
+	}
+
+	public void eliminarCategoriaBtnPressed(ActionEvent event) throws IOException {
+
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/DeleteCategoriaWindow.fxml"));
+		Scene scene = new Scene(root, 300, 200);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void agregarProductoBtnPressed(ActionEvent event) throws IOException {
+
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/AddProductoWindow.fxml"));
+		Scene scene = new Scene(root, 300, 400);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.showAndWait();
+		populateCategorias();
+	}
+	
+	public void EditarProductoBtnPressed(ActionEvent event) throws IOException {
+
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/EditProductoWindow.fxml"));
+		Scene scene = new Scene(root, 320, 450);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.showAndWait();
+		populateCategorias();
+	}
+	public void EliminarProductoBtnPressed(ActionEvent event) throws IOException {
+
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/DeleteProductoWindow.fxml"));
+		Scene scene = new Scene(root, 300, 210);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.showAndWait();
+		populateCategorias();
+	}
+	
+	
 }

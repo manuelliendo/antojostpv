@@ -20,6 +20,9 @@
          <children>
             <Button mnemonicParsing="false" text="PEDIDOS" HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#btnProductosPressed" text="PRODUCTOS" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#btnInventarioPressed" text="INVENTARIO" />
+            <Button mnemonicParsing="false" onAction="#btnEstadisticasPressed" text="ESTADISTICAS" />
+            <Button mnemonicParsing="false" text="PUERTA A PUERTA" />
             <Button mnemonicParsing="false" onAction="#btnConfigPressed" text="CONFIGURACION" HBox.hgrow="ALWAYS" />
          </children>
          <opaqueInsets>
@@ -53,6 +56,15 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#btnCerrarSesionPressed" text="Cerrar sesión">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
                <opaqueInsets>
                   <Insets right="15.0" />

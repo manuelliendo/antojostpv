@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProductosWindowController">
+   <children>
+      <HBox prefHeight="50.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#btnPedidosPressed" text="PEDIDOS" />
+            <Button mnemonicParsing="false" text="PRODUCTOS" />
+            <Button mnemonicParsing="false" onAction="#btnInventarioPressed" text="INVENTARIO" />
+            <Button mnemonicParsing="false" text="ESTADISTICAS" />
+            <Button mnemonicParsing="false" text="PUERTA A PUERTA" />
+            <Button mnemonicParsing="false" onAction="#btnConfigPressed" text="CONFIGURACION" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label id="labelCategoriaProducto" fx:id="label" alignment="CENTER" contentDisplay="CENTER" text="CATEGORIAS" VBox.vgrow="ALWAYS" />
+                  <ListView fx:id="listViewCategorias" prefHeight="280.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="70.0" right="40.0" />
+                     </VBox.margin>
+                  </ListView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0">
+                     <children>
+                        <Label text="GESTIONAR CATEGORIAS">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <MenuButton mnemonicParsing="false" text="+">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#agregarCategoriaBtnPressed" text="Agregar" />
+                            <MenuItem mnemonicParsing="false" onAction="#editarCategoriaBtnPressed" text="Editar" />
+                              <MenuItem mnemonicParsing="false" onAction="#eliminarCategoriaBtnPressed" text="Eliminar" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="70.0" top="35.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0">
+                     <children>
+                        <Label text="GESTIONAR PRODUCTOS">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <MenuButton mnemonicParsing="false" text="+">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#agregarProductoBtnPressed" text="Agregar" />
+                              <MenuItem mnemonicParsing="false" onAction="#EditarProductoBtnPressed" text="Editar" />
+                              <MenuItem mnemonicParsing="false" onAction="#EliminarProductoBtnPressed" text="Eliminar" />
+                           </items>
+                        </MenuButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="70.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label id="labelProductoProducto" text="PRODUCTOS" />
+                  <TilePane fx:id="tilePaneproductos" prefHeight="220.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="40.0" right="70.0" />
+                     </VBox.margin>
+                  </TilePane>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

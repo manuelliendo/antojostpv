@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -27,11 +28,14 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -401,6 +405,64 @@ public class MainMenuController implements Initializable {
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
+	}
+	
+	public void btnInventarioPressed(ActionEvent event) throws IOException{
+		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/InventarioWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.setMaximized(true);
+		stage.show();
+	}
+
+	public void btnEstadisticasPressed(ActionEvent event) throws IOException {
+		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/EstadisticasWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.setMaximized(true);
+		stage.show();
+	}
+	
+	public void btnCerrarSesionPressed(ActionEvent event) throws IOException {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmacion");
+		alert.setHeaderText("Cerrar");
+		alert.setContentText("¿Esta seguro que quiere cerrar esta sesión?");
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			Stage stage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource(
+					"/application/Main.fxml"));
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			double width = screenSize.getWidth();
+			double height = screenSize.getHeight();
+			Scene scene = new Scene(root, width, height);
+			scene.getStylesheets().add(
+					getClass().getResource("application.css").toExternalForm());
+			stage.setScene(scene);
+			stage.setMaximized(true);
+			stage.show();
+			Stage stage1 = (Stage)listViewCategorias.getScene().getWindow();
+			stage1.close();
+			
+		}
+		else{
+			
+		}
 	}
 	
 	public void write() throws IOException {

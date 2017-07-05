@@ -65,4 +65,18 @@ public class ConfigWindowController {
 		primaryStage.setMaximized(true);
 		primaryStage.show();
 	}
+	public void btnInventarioPressed(ActionEvent event) throws IOException{
+		Stage stage = (Stage)l.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/InventarioWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.setMaximized(true);
+		stage.show();
+	}
 }

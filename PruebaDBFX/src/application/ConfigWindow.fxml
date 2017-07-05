@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfigWindowController">
    <children>
@@ -15,10 +16,18 @@
          <children>
             <Button mnemonicParsing="false" onAction="#btnPedidosPressed" text="PEDIDOS" />
             <Button mnemonicParsing="false" onAction="#btnProductosPressed" text="PRODUCTOS" />
+            <Button mnemonicParsing="false" onAction="#btnInventarioPressed" text="INVENTARIO" />
+            <Button mnemonicParsing="false" text="ESTADISTICAS" />
+            <Button mnemonicParsing="false" text="PUERTA A PUERTA" />
             <Button mnemonicParsing="false" text="CONFIGURACION" />
          </children>
       </HBox>
       <Button layoutX="220.0" layoutY="416.0" mnemonicParsing="false" text="Button" />
       <Label layoutX="295.0" layoutY="420.0" text="Configurar impresoras" />
+      <Label layoutX="220.0" layoutY="190.0" text="Configuracion">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
