@@ -19,10 +19,6 @@ public class ConfigWindowController {
 	@FXML
 	Label l = new Label();
 
-	public void btnUsuariosPressed(ActionEvent event) {
-
-	}
-
 	public void btnConfigFacturaPressed(ActionEvent event) throws IOException {
 
 		Stage stage = new Stage();
@@ -65,6 +61,7 @@ public class ConfigWindowController {
 		primaryStage.setMaximized(true);
 		primaryStage.show();
 	}
+	
 	public void btnInventarioPressed(ActionEvent event) throws IOException{
 		Stage stage = (Stage)l.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
@@ -77,6 +74,54 @@ public class ConfigWindowController {
 				getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
+		stage.show();
+	}
+
+	public void btnEstadisticasPressed(ActionEvent event) throws IOException {
+		Stage stage = (Stage)l.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/EstadisticasWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.setMaximized(true);
+		stage.show();
+	}
+	
+	public void btnAgregarUsuariosPressed(ActionEvent event) throws IOException {
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/AddUsuarioWindow.fxml"));
+		Scene scene = new Scene(root, 400, 600);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void btnEditarUsuariosPressed(ActionEvent event) throws IOException {
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/EditUsuarioWindow.fxml"));
+		Scene scene = new Scene(root, 400, 330);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void btnEliminarUsuariosPressed(ActionEvent event) throws IOException {
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/DeleteUsuarioWindow.fxml"));
+		Scene scene = new Scene(root, 400, 600);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
 		stage.show();
 	}
 }

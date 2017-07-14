@@ -252,6 +252,7 @@ public class ProductosWindowController implements Initializable {
 		primaryStage.setMaximized(true);
 		primaryStage.show();
 	}
+
 	public void btnConfigPressed (ActionEvent event) throws IOException{
 		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
@@ -267,18 +268,21 @@ public class ProductosWindowController implements Initializable {
 		stage.show();
 	}
 
-	public void agregarCategoriaBtnPressed(ActionEvent event) throws IOException {
-
-		Stage stage = new Stage();
+	public void btnEstadisticasPressed(ActionEvent event) throws IOException {
+		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
-				"/application/AddCategoriaWindow.fxml"));
-		Scene scene = new Scene(root, 300, 400);
+				"/application/EstadisticasWindow.fxml"));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
 				getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
+		stage.setMaximized(true);
 		stage.show();
 	}
-
+	
 	public void btnInventarioPressed(ActionEvent event) throws IOException{
 		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
@@ -293,6 +297,19 @@ public class ProductosWindowController implements Initializable {
 		stage.setMaximized(true);
 		stage.show();
 	}
+	
+	public void agregarCategoriaBtnPressed(ActionEvent event) throws IOException {
+
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/application/AddCategoriaWindow.fxml"));
+		Scene scene = new Scene(root, 300, 400);
+		scene.getStylesheets().add(
+				getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
+
 	public void editarCategoriaBtnPressed(ActionEvent event) throws IOException {
 
 		Stage stage = new Stage();

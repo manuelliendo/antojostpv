@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="application.InventarioWindowController">
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventarioWindowController">
    <children>
       <VBox layoutX="267.0" layoutY="116.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -21,7 +20,7 @@
                   <Button mnemonicParsing="false" onAction="#btnPedidosPressed" text="PEDIDOS" />
                   <Button mnemonicParsing="false" onAction="#btnProductosPressed" text="PRODUCTOS" />
                   <Button mnemonicParsing="false" text="INVENTARIO" />
-                  <Button mnemonicParsing="false" text="ESTADISTICAS" />
+                  <Button mnemonicParsing="false" onAction="#btnEstadisticasPressed" text="ESTADISTICAS" />
                   <Button mnemonicParsing="false" text="PUERTA A PUERTA" />
                   <Button mnemonicParsing="false" onAction="#btnConfigPressed" text="CONFIGURACION" />
                </children>

@@ -18,7 +18,7 @@
             <Button mnemonicParsing="false" onAction="#btnPedidosPressed" text="PEDIDOS" />
             <Button mnemonicParsing="false" text="PRODUCTOS" />
             <Button mnemonicParsing="false" onAction="#btnInventarioPressed" text="INVENTARIO" />
-            <Button mnemonicParsing="false" text="ESTADISTICAS" />
+            <Button mnemonicParsing="false" onAction="#btnEstadisticasPressed" text="ESTADISTICAS" />
             <Button mnemonicParsing="false" text="PUERTA A PUERTA" />
             <Button mnemonicParsing="false" onAction="#btnConfigPressed" text="CONFIGURACION" />
          </children>
