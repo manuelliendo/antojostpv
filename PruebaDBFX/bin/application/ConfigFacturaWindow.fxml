@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="536.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConfigFacturaWindowController">
    <children>
-      <VBox layoutX="119.0" layoutY="-56.0" prefHeight="535.0" prefWidth="626.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox id="backGround" layoutX="119.0" layoutY="-56.0" prefHeight="535.0" prefWidth="626.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="42.0" prefWidth="500.0">
                <children>
@@ -171,13 +171,13 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minWidth="80.0" prefHeight="80.0" prefWidth="500.0">
                <children>
-                  <Button mnemonicParsing="false" text="Pruebas SFC">
+                  <Button id="btn1" mnemonicParsing="false" onAction="#btnPruebasSFCPressed" text="Pruebas SFC">
                      <HBox.margin>
                         <Insets left="120.0" />
                      </HBox.margin>
                   </Button>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#btnguardarPressed" text="Guardar">
+                  <Button id="btn2" mnemonicParsing="false" onAction="#btnguardarPressed" text="Guardar">
                      <HBox.margin>
                         <Insets right="120.0" />
                      </HBox.margin></Button>

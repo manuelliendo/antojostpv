@@ -10,61 +10,128 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProductosWindowController">
    <children>
-      <HBox prefHeight="50.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="25.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#btnPedidosPressed" text="PEDIDOS" />
-            <Button mnemonicParsing="false" text="PRODUCTOS" />
-            <Button mnemonicParsing="false" onAction="#btnInventarioPressed" text="INVENTARIO" />
-            <Button mnemonicParsing="false" onAction="#btnEstadisticasPressed" text="ESTADISTICAS" />
-            <Button mnemonicParsing="false" text="PUERTA A PUERTA" />
-            <Button mnemonicParsing="false" onAction="#btnConfigPressed" text="CONFIGURACION" />
+            <AnchorPane minHeight="-Infinity" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnPedidos" mnemonicParsing="false" onAction="#btnPedidosPressed" prefHeight="35.0" text="PEDIDOS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="563.0" layoutY="10.0" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnProductos" minHeight="-Infinity" mnemonicParsing="false" prefHeight="35.0" text="PRODUCTOS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="763.0" layoutY="10.0" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnInventarios" minHeight="-Infinity" mnemonicParsing="false" onAction="#btnInventarioPressed" prefHeight="35.0" text="INVENTARIO" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="827.0" layoutY="10.0" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnEstadisticas" minHeight="-Infinity" mnemonicParsing="false" onAction="#btnEstadisticasPressed" prefHeight="35.0" text="ESTADISTICAS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="845.0" layoutY="10.0" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnPaP" minHeight="-Infinity" mnemonicParsing="false" prefHeight="35.0" text="PUERTA A PUERTA" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="861.0" layoutY="10.0" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnConfig" minHeight="-Infinity" mnemonicParsing="false" onAction="#btnConfigPressed" prefHeight="35.0" text="CONFIGURACION" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label id="labelCategoriaProducto" fx:id="label" alignment="CENTER" contentDisplay="CENTER" text="CATEGORIAS" VBox.vgrow="ALWAYS" />
+                  <Label fx:id="labelCategorias" alignment="CENTER" contentDisplay="CENTER" maxWidth="1000.0" minWidth="-Infinity" prefHeight="35.0" prefWidth="430.0" text="CATEGORIAS" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
                   <ListView fx:id="listViewCategorias" prefHeight="280.0" prefWidth="200.0">
                      <VBox.margin>
-                        <Insets left="70.0" right="40.0" />
+                        <Insets />
                      </VBox.margin>
                   </ListView>
                   <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0">
                      <children>
-                        <Label text="GESTIONAR CATEGORIAS">
+                        <Label id="labelGestionCategorias" text="GESTIONAR CATEGORIAS">
                            <HBox.margin>
                               <Insets right="15.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </Label>
-                        <MenuButton mnemonicParsing="false" text="+">
+                        <MenuButton id="btnGestionCategorias" mnemonicParsing="false" text="+" textFill="WHITE">
                           <items>
                             <MenuItem mnemonicParsing="false" onAction="#agregarCategoriaBtnPressed" text="Agregar" />
                             <MenuItem mnemonicParsing="false" onAction="#editarCategoriaBtnPressed" text="Editar" />
                               <MenuItem mnemonicParsing="false" onAction="#eliminarCategoriaBtnPressed" text="Eliminar" />
                           </items>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </MenuButton>
                      </children>
                      <VBox.margin>
-                        <Insets left="70.0" top="35.0" />
+                        <Insets left="70.0" top="50.0" />
                      </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0">
                      <children>
-                        <Label text="GESTIONAR PRODUCTOS">
+                        <Label id="labelGestionProductos" text="GESTIONAR PRODUCTOS">
                            <HBox.margin>
                               <Insets right="15.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </Label>
-                        <MenuButton mnemonicParsing="false" text="+">
+                        <MenuButton id="btnGestionProductos" mnemonicParsing="false" text="+" textFill="WHITE">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#agregarProductoBtnPressed" text="Agregar" />
                               <MenuItem mnemonicParsing="false" onAction="#EditarProductoBtnPressed" text="Editar" />
                               <MenuItem mnemonicParsing="false" onAction="#EliminarProductoBtnPressed" text="Eliminar" />
                            </items>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </MenuButton>
                      </children>
                      <VBox.margin>
@@ -73,20 +140,26 @@
                   </HBox>
                </children>
                <HBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="10.0" left="70.0" right="10.0" top="20.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="540.0" prefWidth="500.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label id="labelProductoProducto" text="PRODUCTOS" />
-                  <TilePane fx:id="tilePaneproductos" prefHeight="220.0" prefWidth="200.0">
+                  <Label id="labelProductos" alignment="CENTER" contentDisplay="CENTER" maxWidth="1000.0" prefHeight="35.0" prefWidth="340.0" text="PRODUCTOS" VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets left="40.0" right="70.0" />
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Label>
+                  <TilePane fx:id="tilePaneproductos" prefHeight="220.0" prefWidth="340.0">
+                     <VBox.margin>
+                        <Insets />
                      </VBox.margin>
                   </TilePane>
                </children>
                <HBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="70.0" top="20.0" />
                </HBox.margin>
             </VBox>
          </children>

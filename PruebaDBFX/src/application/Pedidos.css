@@ -1,0 +1,171 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*--------------------------------------------------- */
+/*PEDIDOS */
+
+#listViewCategorias{
+	/*-fx-background-color: rgb(128.0,24.0,21.0);*/
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 1.0px;
+	-fx-font-size: 16.0pt;
+	-fx-font-weight:bold;
+	
+}
+
+#panelProductos {
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 1.0px;
+	-fx-background-color: white;
+}
+#productos {
+	-fx-alignment: center !important;
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 2.5px;
+}
+#productos:hover {
+	-fx-border-color: yellow;
+}
+#boxCategoria{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-background-color: white;
+	-fx-border-width: 3.0px;
+	
+}
+#boxCategoria:hover{
+	-fx-border-color: yellow;
+	-fx-border-width: 3.0px;
+}
+#labelCategoria{
+	-fx-text-fill: black;
+}
+
+
+#ordenBox{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-background-color: white;
+	
+}
+#labelCategorias{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 3.0px;
+	-fx-background-color: #cc3300;
+	-fx-text-fill: white;	
+}
+#labelProductos{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 3.0px 3px 1px 3px;
+	-fx-background-color: rgb(27.0,127.0,178.0);
+	-fx-text-fill: white;	
+}
+#labelPedidoEspecial{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 3.0px;
+	-fx-background-color: rgb(27.0,127.0,178.0);
+	-fx-text-fill: white;	
+}
+
+#tableviewPedidoEspecial{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+}
+#tableviewPedidoTotal{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-font-size: 12.0pt;
+}
+#tableviewPedidoTotal .column-header ,#tableviewPedidoEspecial .column-header, #ordenTotal .column-header {
+	-fx-background-color: rgb(168.0,47.0,22.0);
+	-fx-border-width: 1px;
+	-fx-border-color:  rgb(128.0,24.0,21.0);
+}
+#tableviewPedidoTotal .column-header .label, #tableviewPedidoEspecial .column-header .label,#ordenTotal .column-header .label{
+	-fx-text-fill: white;
+}
+
+#btnDeshacer{
+	-fx-background-color: red;
+}
+#btnDeshacer:hover{
+	-fx-background-color: rgb(2544.0,90.0,90.0);
+}
+
+#btnOk{
+	-fx-background-color: rgb(0.0,255.0,0.0);
+}
+#btnOk:hover{
+	-fx-background-color: rgb(85.0,252.0,85.0);
+}
+#root{
+		-fx-background-color: white;
+}
+
+#btnPedidos{
+	-fx-background-color: white !important;
+	-fx-text-fill: rgb(128,24,21) !important;
+	
+}
+#btnProductos{
+	-fx-background-color:rgb(20,141,204) !important; 
+	-fx-text-fill: white !important;
+}
+#btnProductos:hover{
+	-fx-background-color:rgb(60,181,244) !important; 
+	-fx-text-fill: white !important;
+}
+#btnInventarios{
+	-fx-background-color:rgb(162,131,86) !important; 
+	-fx-text-fill: white !important;
+}
+#btnInventarios:hover{
+	-fx-background-color:rgb(202,171,126) !important; 
+	-fx-text-fill: white !important;
+}
+#btnEstadisticas{
+	-fx-background-color: rgb(178,18,31) !important; 
+	-fx-text-fill: white !important;
+}
+#btnEstadisticas:hover{
+	-fx-background-color: rgb(218,58,71) !important; 
+	-fx-text-fill: white !important;
+}
+#btnPaP{
+	-fx-background-color: rgb(91,64,10) !important; 
+	-fx-text-fill: white !important;
+}
+#btnPaP:hover{
+	-fx-background-color: rgb(131,104,50) !important; 
+	-fx-text-fill: white !important;
+}
+#btnConfig{
+	-fx-background-color: rgb(27,127,178) !important; 
+	-fx-text-fill: white !important;
+}
+#btnConfig:hover{
+	-fx-background-color: rgb(77,167,218) !important; 
+	-fx-text-fill: white !important;
+}
+#btnCerrarSesion{
+	-fx-background-color: rgb(128.0,24.0,21.0);
+	-fx-text-fill: white;
+}
+
+/*Factura */
+#vBoxFactura{
+	-fx-background-color: white !important;
+}
+#btnFactura{
+	-fx-background-color: rgb(0.0,255.0,0.0);
+}
+#btnFactura:hover{
+	-fx-background-color: rgb(85.0,255.0,85.0);
+}
+#tableViewOrdenTotal{
+	-fx-border-width: 2px;
+	-fx-border-color: rgb(168.0,47.0,22.0);
+}
+#tableViewOrdenTotal .column-header ,#tableViewOrdenTotal .column-header{
+	-fx-background-color: rgb(168.0,47.0,22.0);
+	-fx-border-width: 1px;
+	-fx-border-color:  rgb(128.0,24.0,21.0);
+}
+#tableViewOrdenTotal .column-header .label, #tableViewOrdenTotal .column-header .label{
+	-fx-text-fill: white;
+}
+ 

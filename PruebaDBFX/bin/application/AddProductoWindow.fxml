@@ -12,10 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddProductoWindowController">
    <children>
-      <VBox layoutX="116.0" layoutY="206.0" prefHeight="92.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox id="backGround" layoutX="116.0" layoutY="206.0" prefHeight="92.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="50.0" prefWidth="300.0">
                <children>
@@ -40,7 +39,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="200.0" prefWidth="200.0" />
-                  <ComboBox fx:id="comboBoxNombre" minWidth="-Infinity" prefWidth="150.0">
+                  <ComboBox id="comboBox1" fx:id="comboBoxNombre" minWidth="-Infinity" prefWidth="150.0">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
@@ -85,7 +84,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#BuscarBtnPressed" prefHeight="25.0" prefWidth="60.0" text="Buscar">
+                  <Button id="btn1" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#BuscarBtnPressed" prefHeight="25.0" prefWidth="60.0" text="Buscar">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
@@ -103,7 +102,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" prefHeight="40.0" prefWidth="300.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#GuardarBrnPressed" text="Guardar">
+                  <Button id="btn2" mnemonicParsing="false" onAction="#GuardarBrnPressed" text="Guardar">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>

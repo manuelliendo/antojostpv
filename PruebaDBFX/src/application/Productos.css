@@ -1,0 +1,109 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*--------------------------------------------------- */
+/*PEDIDOS */
+
+#listViewCategorias{
+	/*-fx-background-color: rgb(128.0,24.0,21.0);*/
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 1.0px;
+	-fx-font-size: 16.0pt;
+	-fx-font-weight:bold;
+	
+}
+
+#panelProductos {
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 1.0px;
+	-fx-background-color: white;
+}
+#productos {
+	-fx-alignment: center !important;
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 2.5px;
+}
+#productos:hover {
+	-fx-border-color: yellow;
+}
+#boxCategoria{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-background-color: white;
+	-fx-border-width: 3.0px;
+	
+}
+#boxCategoria:hover{
+	-fx-border-color: yellow;
+	-fx-border-width: 3.0px;
+}
+#labelCategoria{
+	-fx-text-fill: black;
+}
+
+
+#labelCategorias{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 3.0px;
+	-fx-background-color: #cc3300;
+	-fx-text-fill: white;	
+}
+#labelProductos{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-border-width: 3.0px 3px 1px 3px;
+	-fx-background-color: rgb(27.0,127.0,178.0);
+	-fx-text-fill: white;	
+}
+
+
+#root{
+		-fx-background-color: white;
+}
+
+#btnPedidos{
+	-fx-text-fill: white !important;
+	-fx-background-color:rgb(128,24,21) !important;
+}
+#btnPedidos:hover{
+	-fx-text-fill: white !important;
+	-fx-background-color:rgb(168,64,61) !important;
+}
+#btnProductos{
+	-fx-background-color:white !important; 
+	-fx-text-fill: rgb(20,141,204) !important;
+}
+#btnInventarios{
+	-fx-background-color:rgb(162,131,86) !important; 
+	-fx-text-fill: white !important;
+}
+#btnInventarios:hover{
+	-fx-background-color:rgb(202,171,126) !important; 
+	-fx-text-fill: white !important;
+}
+#btnEstadisticas{
+	-fx-background-color: rgb(178,18,31) !important; 
+	-fx-text-fill: white !important;
+}
+#btnEstadisticas:hover{
+	-fx-background-color: rgb(218,58,71) !important; 
+	-fx-text-fill: white !important;
+}
+#btnPaP{
+	-fx-background-color: rgb(91,64,10) !important; 
+	-fx-text-fill: white !important;
+}
+#btnPaP:hover{
+	-fx-background-color: rgb(131,104,50) !important; 
+	-fx-text-fill: white !important;
+}
+#btnConfig{
+	-fx-background-color: rgb(27,127,178) !important; 
+	-fx-text-fill: white !important;
+}
+#btnConfig:hover{
+	-fx-background-color: rgb(77,167,218) !important; 
+	-fx-text-fill: white !important;
+}
+
+#btnGestionCategorias,#btnGestionProductos{
+	-fx-background-color: rgb(20.0,141.0,204.0) !important;
+}
+
+/*Factura */

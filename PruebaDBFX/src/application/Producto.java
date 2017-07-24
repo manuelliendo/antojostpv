@@ -30,7 +30,7 @@ public class Producto{
 //		this.id = id;
 		this.nombre = nombre;
 		this.imagen = new ImageView(new Image(
-				"img/logoAntojos5.jpg", 100, 100, true, true));
+				"img/logoAntojos5.png", 100, 100, true, true));
 		this.precio = precio;
 		
 	}

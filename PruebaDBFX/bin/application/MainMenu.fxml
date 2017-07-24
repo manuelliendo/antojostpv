@@ -10,36 +10,82 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
    <children>
-      <HBox prefHeight="50.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="TOP_CENTER" prefHeight="25.0" prefWidth="1080.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" text="PEDIDOS" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#btnProductosPressed" text="PRODUCTOS" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#btnInventarioPressed" text="INVENTARIO" />
-            <Button mnemonicParsing="false" onAction="#btnEstadisticasPressed" text="ESTADISTICAS" />
-            <Button mnemonicParsing="false" text="PUERTA A PUERTA" />
-            <Button mnemonicParsing="false" onAction="#btnConfigPressed" text="CONFIGURACION" HBox.hgrow="ALWAYS" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnPedidos" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="PEDIDOS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="190.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnProductos" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnProductosPressed" prefHeight="35.0" prefWidth="180.0" text="PRODUCTOS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1090.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnInventarios" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnInventarioPressed" prefHeight="35.0" prefWidth="180.0" text="INVENTARIO" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1090.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnEstadisticas" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnEstadisticasPressed" prefHeight="35.0" prefWidth="180.0" text="ESTADISTICAS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1090.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnPaP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="PUERTA A PUERTA" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnConfig" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btnConfigPressed" prefHeight="35.0" prefWidth="180.0" text="CONFIGURACION" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
       </HBox>
       <HBox prefHeight="650.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="530.0" prefWidth="450.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="530.0" prefWidth="450.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="labelCategorias" alignment="CENTER" contentDisplay="CENTER" maxWidth="600.0" prefHeight="25.0" prefWidth="430.0" text="CATEGORIAS" wrapText="true">
+                  <Label fx:id="labelCategorias" alignment="CENTER" contentDisplay="CENTER" maxWidth="1000.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="430.0" text="CATEGORIAS" wrapText="true" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ListView id="listViewCategorias" fx:id="listViewCategorias" nodeOrientation="LEFT_TO_RIGHT" prefHeight="280.0" prefWidth="430.0" VBox.vgrow="ALWAYS" />
-                  <Label id="labelPedidoEspecial" alignment="CENTER" maxHeight="1000.0" maxWidth="1000.0" prefHeight="25.0" prefWidth="430.0" text="PEDIDO ESPECIAL" VBox.vgrow="ALWAYS">
+                  <ListView id="listViewCategorias" fx:id="listViewCategorias" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="430.0" VBox.vgrow="ALWAYS" />
+                  <Label id="labelPedidoEspecial" alignment="CENTER" maxHeight="1000.0" maxWidth="1000.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="430.0" text="PEDIDO ESPECIAL" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -47,7 +93,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <TableView id="tableviewPedidoEspecial" fx:id="tableViewPedidoEspecial" prefHeight="170.0" prefWidth="430.0" VBox.vgrow="ALWAYS">
+                  <TableView id="tableviewPedidoEspecial" fx:id="tableViewPedidoEspecial" minHeight="-Infinity" prefHeight="200.0" prefWidth="430.0" VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="prodEspecial" editable="false" minWidth="100.0" prefWidth="500.0" text="PRODUCTO" />
                       <TableColumn fx:id="pedidoEspecial" minWidth="100.0" prefWidth="500.0" text="PEDIDO ESPECIAL" />
@@ -56,9 +102,10 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                  <Region prefHeight="200.0" prefWidth="200.0" />
+                  <HBox alignment="BOTTOM_LEFT" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#btnCerrarSesionPressed" text="Cerrar sesión">
+                        <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#btnCerrarSesionPressed" text="Cerrar sesión">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
@@ -70,10 +117,10 @@
                   <Insets right="15.0" />
                </opaqueInsets>
                <HBox.margin>
-                  <Insets bottom="100.0" left="70.0" right="20.0" />
+                  <Insets bottom="50.0" left="70.0" right="20.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="600.0" prefWidth="530.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label id="labelProductos" alignment="CENTER" contentDisplay="CENTER" maxWidth="1000.0" prefHeight="25.0" prefWidth="530.0" text="PRODUCTOS">
                      <font>
@@ -122,10 +169,18 @@
                               <Insets right="30.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="total" text="0.00 Bs">
+                        <Label fx:id="total" text="0.00">
                            <font>
                               <Font size="28.0" />
                            </font>
+                        </Label>
+                        <Label text="Bs.">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>

@@ -12,10 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="462.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="application.EditUsuarioWindowController">
+<AnchorPane prefHeight="330.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditUsuarioWindowController">
    <children>
-      <VBox layoutX="154.0" layoutY="279.0" prefHeight="498.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox id="backGround" layoutX="154.0" layoutY="279.0" prefHeight="498.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Editar Usuario">
                <font>
@@ -33,7 +32,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="100.0" prefWidth="25.0" HBox.hgrow="ALWAYS" />
-                  <ComboBox fx:id="comboboxUsuario" minWidth="-Infinity" onAction="#ComboboxUsuariosSelected" prefWidth="150.0">
+                  <ComboBox id="comboBox1" fx:id="comboboxUsuario" minWidth="-Infinity" onAction="#ComboboxUsuariosSelected" prefWidth="150.0">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>
@@ -108,7 +107,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="100.0" prefWidth="25.0" HBox.hgrow="ALWAYS" />
-                  <ComboBox fx:id="comboboxCargo" minWidth="-Infinity" prefWidth="150.0">
+                  <ComboBox id="comboBox1" fx:id="comboboxCargo" minWidth="-Infinity" prefWidth="150.0">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>
@@ -117,7 +116,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="400.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#BtnGuardarPressed" text="Guardar">
+                  <Button id="btn2" mnemonicParsing="false" onAction="#BtnGuardarPressed" text="Guardar">
                      <HBox.margin>
                         <Insets right="35.0" />
                      </HBox.margin>

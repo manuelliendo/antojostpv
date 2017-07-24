@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddProductoAlmacenWindowController">
    <children>
-      <VBox layoutX="128.0" layoutY="81.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox id="backGround" layoutX="128.0" layoutY="81.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="300.0">
                <children>
@@ -118,7 +118,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#BtnGuardarPressed" text="Guardar">
+                  <Button id="btn2" mnemonicParsing="false" onAction="#BtnGuardarPressed" text="Guardar">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>

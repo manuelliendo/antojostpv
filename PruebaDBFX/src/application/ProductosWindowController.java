@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -38,6 +39,16 @@ import javafx.stage.Stage;
 
 public class ProductosWindowController implements Initializable {
 
+	@FXML
+	Button btnProductos;
+	@FXML
+	Button btnInventarios;
+	@FXML
+	Button btnEstadisticas;
+	@FXML
+	Button btnPaP;
+	@FXML
+	Button btnConfig;
 	@FXML
 	Label label = new Label();
 	@FXML
@@ -62,6 +73,16 @@ public class ProductosWindowController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		if(Usuario.getPermiso() == 2){
+			btnConfig.setDisable(true);
+			
+		}else{
+			if(Usuario.getPermiso() == 3){
+				btnConfig.setDisable(true);
+				btnProductos.setDisable(true);
+				btnEstadisticas.setDisable(true);
+				}
+		}
 		conn = ConnectionDB.Conectar();
 		populateCategorias();
 		populateProductos();
@@ -197,9 +218,10 @@ public class ProductosWindowController implements Initializable {
 			for (int i = 0; i < productos.size(); i++) {
 
 				VBox p = new VBox();
+				Label l = new Label(productos.get(i).getNombre());
 				p.setId("productos");
 				p.setAlignment(Pos.CENTER);
-				p.getChildren().add(productos.get(i).getImagen());
+				p.getChildren().addAll(productos.get(i).getImagen(),l);
 				// tilePaneproductos.getChildren().add(
 				// productos.get(i).getImagen());
 				tilePaneproductos.getChildren().add(p);
@@ -239,7 +261,7 @@ public class ProductosWindowController implements Initializable {
 	}
 
 	public void btnPedidosPressed(ActionEvent event) throws IOException {
-		Stage primaryStage = (Stage) label.getScene().getWindow();
+		Stage primaryStage = (Stage) listViewCategorias.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/MainMenu.fxml"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -247,7 +269,7 @@ public class ProductosWindowController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height - 50);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Pedidos.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setMaximized(true);
 		primaryStage.show();
@@ -262,7 +284,7 @@ public class ProductosWindowController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Config.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
@@ -277,7 +299,7 @@ public class ProductosWindowController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Estadisticas.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
@@ -292,7 +314,7 @@ public class ProductosWindowController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Inventario.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
@@ -305,7 +327,16 @@ public class ProductosWindowController implements Initializable {
 				"/application/AddCategoriaWindow.fxml"));
 		Scene scene = new Scene(root, 300, 400);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Agregar categoria nueva");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -317,7 +348,16 @@ public class ProductosWindowController implements Initializable {
 				"/application/EditCategoriaWindow.fxml"));
 		Scene scene = new Scene(root, 300, 400);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Editar categoria");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.show();
 		
@@ -330,7 +370,16 @@ public class ProductosWindowController implements Initializable {
 				"/application/DeleteCategoriaWindow.fxml"));
 		Scene scene = new Scene(root, 300, 200);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Eliminar categoria");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -342,7 +391,16 @@ public class ProductosWindowController implements Initializable {
 				"/application/AddProductoWindow.fxml"));
 		Scene scene = new Scene(root, 300, 400);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Agregar producto nuevo");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.showAndWait();
 		populateCategorias();
@@ -355,7 +413,16 @@ public class ProductosWindowController implements Initializable {
 				"/application/EditProductoWindow.fxml"));
 		Scene scene = new Scene(root, 320, 450);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Editar producto");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.showAndWait();
 		populateCategorias();
@@ -367,7 +434,16 @@ public class ProductosWindowController implements Initializable {
 				"/application/DeleteProductoWindow.fxml"));
 		Scene scene = new Scene(root, 300, 210);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Eliminar producto");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.showAndWait();
 		populateCategorias();

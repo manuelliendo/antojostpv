@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="341.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PruebasSFCWindowController">
+   <children>
+      <VBox id="backGround" layoutX="168.0" layoutY="123.0" prefHeight="459.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label minWidth="-Infinity" prefHeight="27.0" prefWidth="159.0" text="Pruebas SFC">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label minWidth="-Infinity" prefWidth="100.0" text="N. de autorización">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="textfieldNautorizacion" minWidth="-Infinity" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="45.0" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label minWidth="-Infinity" prefWidth="100.0" text="N. de factura">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="textfieldNFactura" minWidth="-Infinity" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="80.0" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label minWidth="-Infinity" prefWidth="100.0" text="Nit / CI">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="textfieldNit" minWidth="-Infinity" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="115.0" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label minWidth="-Infinity" prefHeight="17.0" prefWidth="113.0" text="Fecha de transacción">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="textfieldFecha" minWidth="-Infinity" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label minWidth="-Infinity" prefHeight="17.0" prefWidth="120.0" text="Monto de transacción">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="textfieldMonto" minWidth="-Infinity" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="176.0" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label minWidth="-Infinity" prefHeight="17.0" prefWidth="117.0" text="Llave de dosificación">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="textfieldLlaveDos" minWidth="-Infinity" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Button id="btn1" mnemonicParsing="false" onAction="#BtnPruebasPressed" text="Correr prueba">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="255.0" prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Label minWidth="-Infinity" prefWidth="100.0" text="Cod. de control">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="labelCcontrol" text="0">
+                     <HBox.margin>
+                        <Insets right="35.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

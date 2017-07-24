@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditCategoriaWindowController">
    <children>
-      <VBox layoutX="100.0" layoutY="91.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox id="backGround" layoutX="100.0" layoutY="91.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="300.0">
                <children>
@@ -36,7 +36,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="25.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <ComboBox fx:id="listaCategorias" minHeight="25.0" minWidth="150.0" onAction="#ComboBoxSelected" prefHeight="25.0" prefWidth="150.0">
+                  <ComboBox id="comboBox1" fx:id="listaCategorias" minHeight="25.0" minWidth="150.0" onAction="#ComboBoxSelected" prefHeight="25.0" prefWidth="150.0">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
@@ -74,7 +74,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minHeight="35.0" prefHeight="35.0" prefWidth="300.0">
                <children>
-                  <Button minWidth="50.0" mnemonicParsing="false" onAction="#BuscarBtnPressed" prefWidth="51.0" text="Buscar">
+                  <Button id="btn1" minWidth="50.0" mnemonicParsing="false" onAction="#BuscarBtnPressed" prefWidth="51.0" text="Buscar">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>
@@ -83,7 +83,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button minWidth="59.0" mnemonicParsing="false" onAction="#GuardarBrnPressed" prefWidth="59.0" text="Guardar">
+                  <Button id="btn2" minWidth="59.0" mnemonicParsing="false" onAction="#GuardarBrnPressed" prefWidth="59.0" text="Guardar">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>

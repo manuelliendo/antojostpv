@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="380.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddCategoriaWindowController">
    <children>
-      <VBox layoutX="106.0" layoutY="196.0" prefHeight="92.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox id="backGround" layoutX="106.0" layoutY="196.0" prefHeight="92.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="300.0">
                <children>
@@ -53,7 +53,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#BuscarBtnPressed" prefHeight="25.0" prefWidth="60.0" text="Buscar">
+                  <Button id="btn1" minHeight="25.0" minWidth="60.0" mnemonicParsing="false" onAction="#BuscarBtnPressed" prefHeight="25.0" prefWidth="60.0" text="Buscar">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
@@ -71,7 +71,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" prefHeight="50.0" prefWidth="300.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#GuardarBrnPressed" text="Guardar">
+                  <Button id="btn2" mnemonicParsing="false" onAction="#GuardarBrnPressed" text="Guardar">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>

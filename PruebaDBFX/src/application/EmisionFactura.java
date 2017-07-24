@@ -3,15 +3,21 @@ package application;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -19,6 +25,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.imageio.ImageIO;
+import javax.print.PrintService;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -38,7 +49,6 @@ import com.itextpdf.text.TabSettings;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.Pfm2afm;
 
 
 /*ESTA CLASE GENERA LA FACTURA EN PDF*/
@@ -50,7 +60,7 @@ public class EmisionFactura{
 
 	public static void Emitir(String nitCliente, String razonSocial,
 			String total, String montoPagado, String cambio, String cajero)
-			throws WriterException, IOException, ClassNotFoundException {
+			throws WriterException, IOException, ClassNotFoundException, PrinterException {
 		DateTimeFormatter fecha = DateTimeFormatter.ofPattern("yyyyMMdd");
 		LocalDate ld = LocalDate.now();
 		readFacturaConfig();
@@ -62,6 +72,7 @@ public class EmisionFactura{
 		generaFactura(lista.get(4), lista.get(9), lista.get(6), lista.get(8),
 				nitCliente, razonSocial, codControl, cajero, lista.get(3),
 				total, montoPagado, cambio,lista.get(13));
+		printPDF("prueba.pdf");
 	}
 
 	/* GENERAR CODIGO DE CONTROL */
@@ -502,11 +513,17 @@ public class EmisionFactura{
 	public static void readFacturaConfig() throws IOException,
 			ClassNotFoundException {
 		FileInputStream fin;
+		ObjectInputStream ois = null;
 		try {
+			int aux;
 			fin = new FileInputStream("ConfigFactura.ser");
-			ObjectInputStream ois = new ObjectInputStream(fin);
+			ois = new ObjectInputStream(fin);
 			List<String> list = (List<String>) ois.readObject();
 			lista = FXCollections.observableList(list);
+			aux = Integer.parseInt(lista.get(9));
+			aux++;
+			lista.set(9, String.valueOf(aux));
+			lista.set(10, String.valueOf(aux));
 			// lista 00 : nombre restaurante
 			// lista 01 : sucursal
 			// lista 02 : direccion
@@ -521,10 +538,12 @@ public class EmisionFactura{
 			// lista 11 : llavedosificacion
 			// lista 12 : llavedosificacion2
 			// lista 13 : extra
-
+			write();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			ois.close();
 		}
 
 	}
@@ -629,6 +648,67 @@ public class EmisionFactura{
 		return output;
 
 	}
-
 	
+//	Imprime la factura
+	public static void printPDF(String fileName)
+	        throws IOException, PrinterException {
+	    PDDocument doc = null;
+	    try
+	    {
+	       doc = PDDocument.load( fileName );
+	    }
+	    finally
+	    {
+	       if( doc != null )
+	       {
+	          doc.close();
+	       }
+	    }
+	    doc.print();
+	    
+	}
+	
+	public static PrintService choosePrinter() {
+	    PrinterJob pj = PrinterJob.getPrinterJob();
+	    PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
+        boolean ok = pj.printDialog(aset);
+	    if(ok) {
+	        return pj.getPrintService();          
+	    }
+	    else {
+	        return null;
+	    }
+	}
+
+	public static void write() throws IOException {
+		FileOutputStream fout = null;
+		ObjectOutputStream oos = null;
+		try {
+			// write object to file
+			fout = new FileOutputStream("ConfigFactura.ser");
+			oos = new ObjectOutputStream(fout);
+			oos.writeObject(new ArrayList<String>(lista));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+
+			if (fout != null) {
+				try {
+					fout.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if (oos != null) {
+				try {
+					oos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+	}
+
 }

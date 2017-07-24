@@ -1,0 +1,32 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*Login */
+
+.AnchorPane{
+	-fx-background-color: white;
+}
+#backGround{
+	-fx-background-color: white;
+}
+#btn1{
+	-fx-background-color: rgb(168,47,22);
+	-fx-text-fill: white;
+}
+#btn1:hover{
+	-fx-background-color: rgb(208,87,62);
+}
+#btn2{
+	-fx-background-color: rgb(20,141,204);
+	-fx-text-fill: white;
+}
+#btn2:hover{
+	-fx-background-color: rgb(60,181,244);
+}
+#comboBox1{
+	-fx-border-color: rgb(168,47,22);
+	-fx-border-width: 2px;
+	-fx-background-color: white;
+}
+#comboBox1:hover{
+	-fx-background-color: whitesmoke;
+	}
+

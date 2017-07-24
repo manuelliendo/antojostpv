@@ -1,6 +1,5 @@
 package application;
 
-
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.FileNotFoundException;
@@ -29,16 +28,16 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
@@ -51,10 +50,22 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
 /*CONTROLADOR DE LA VENTANA PEDIDOS*/
 
 public class MainMenuController implements Initializable {
 
+	
+	@FXML
+	Button btnProductos;
+	@FXML
+	Button btnInventarios;
+	@FXML
+	Button btnEstadisticas;
+	@FXML
+	Button btnPaP;
+	@FXML
+	Button btnConfig;
 	@FXML
 	ListView<Categoria> listViewCategorias = new ListView<Categoria>();
 	@FXML
@@ -68,17 +79,17 @@ public class MainMenuController implements Initializable {
 	@FXML
 	TableView<ProductoSimple> tableViewPedidoEspecial = new TableView<ProductoSimple>();
 	@FXML
-	TableColumn<ProductoSimple, String> prod;
+	TableColumn<ProductoSimple, String> prod = new TableColumn<ProductoSimple, String>();
 	@FXML
-	TableColumn<ProductoSimple, Integer> cant;
+	TableColumn<ProductoSimple, Integer> cant = new TableColumn<ProductoSimple, Integer>();
 	@FXML
-	TableColumn<ProductoSimple, Float> precioUnit;
+	TableColumn<ProductoSimple, Float> precioUnit = new TableColumn<ProductoSimple, Float>();
 	@FXML
-	TableColumn<ProductoSimple, Float> precioTotal;
+	TableColumn<ProductoSimple, Float> precioTotal = new TableColumn<ProductoSimple, Float>();
 	@FXML
-	TableColumn<ProductoSimple, String> prodEspecial;
+	TableColumn<ProductoSimple, String> prodEspecial = new TableColumn<ProductoSimple, String>();
 	@FXML
-	TableColumn<ProductoSimple, String> pedidoEspecial;
+	TableColumn<ProductoSimple, String> pedidoEspecial = new TableColumn<ProductoSimple, String>();
 	@FXML
 	Label total;
 	@FXML
@@ -97,9 +108,23 @@ public class MainMenuController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// TODO: controlar acceso
+		if (Usuario.getPermiso() == 2) {
+			btnConfig.setDisable(true);
+
+		} else {
+			if (Usuario.getPermiso() == 3) {
+				btnConfig.setDisable(true);
+				btnProductos.setDisable(true);
+				btnEstadisticas.setDisable(true);
+			}
+		}
+		
+
 		conn = ConnectionDB.Conectar();
 		populateCategorias();
 		populateProductos();
+		tableViewPedidoEspecial.setEditable(true);
 
 	}
 
@@ -154,7 +179,7 @@ public class MainMenuController implements Initializable {
 											name.getCount()).getImagen());
 
 									HBox.setHgrow(box, Priority.ALWAYS);
-									box.getChildren().addAll(imageview,label);
+									box.getChildren().addAll(imageview, label);
 									box.setAlignment(Pos.CENTER_LEFT);
 									box.setId("boxCategoria");
 									box.autosize();
@@ -163,9 +188,9 @@ public class MainMenuController implements Initializable {
 									label.setId("labelCategoria");
 									setText(null);
 									setGraphic(box);
-									
+
 								}
-								
+
 							}
 						}
 					});
@@ -229,15 +254,16 @@ public class MainMenuController implements Initializable {
 			for (int i = 0; i < productos.size(); i++) {
 
 				VBox p = new VBox();
+				Label l = new Label(productos.get(i).getNombre());
 				p.setId("productos");
 				p.setAlignment(Pos.CENTER);
-				p.getChildren().add(productos.get(i).getImagen());
-				// tilePaneproductos.getChildren().add(
-				// productos.get(i).getImagen());
+				p.getChildren().addAll(productos.get(i).getImagen(),l);
+//				p.getChildren().add(productos.get(i).getImagen());
+				
 				tilePaneproductos.getChildren().add(p);
 				tilePaneproductos.setId("panelProductos");
-				productos.get(i).getImagen()
-						.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				productos.get(i).getImagen().
+				setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 							@Override
 							public void handle(MouseEvent event) {
@@ -250,7 +276,6 @@ public class MainMenuController implements Initializable {
 										RecibirOrden(productos.get(i)
 												.getNombre(), productos.get(i)
 												.getPrecio());
-
 								}
 
 							}
@@ -329,23 +354,28 @@ public class MainMenuController implements Initializable {
 		prodEspecial
 				.setCellValueFactory(new PropertyValueFactory<ProductoSimple, String>(
 						"Nombre"));
-		pedidoEspecial.setCellFactory(TextFieldTableCell.forTableColumn());
 
 		pedidoEspecial
-				.setOnEditStart(new EventHandler<CellEditEvent<ProductoSimple, String>>() {
+				.setCellValueFactory(new PropertyValueFactory<ProductoSimple, String>(
+						"especial"));
+		pedidoEspecial.setEditable(true);
 
+		pedidoEspecial.setCellFactory(TextFieldTableCell
+				.<ProductoSimple> forTableColumn());
+		try{
+		pedidoEspecial
+				.setOnEditCommit(new EventHandler<CellEditEvent<ProductoSimple, String>>() {
 					@Override
 					public void handle(CellEditEvent<ProductoSimple, String> t) {
-						System.out.println(t.getTablePosition().getRow());
 						((ProductoSimple) t.getTableView().getItems()
 								.get(t.getTablePosition().getRow()))
 								.setEspecial(t.getNewValue());
-						;
-
 					}
-
 				});
-
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		tableViewPedido.refresh();
 		tableViewPedidoEspecial.refresh();
 
@@ -363,6 +393,14 @@ public class MainMenuController implements Initializable {
 
 	public void btnOkPressed(ActionEvent event) throws IOException {
 
+		if(orden.size()<=0)
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Error al procesar orden");
+			alert.setContentText("Por favor ingrese minimamente un producto");
+			alert.showAndWait();
+		}else{
 		write();
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource(
@@ -370,15 +408,26 @@ public class MainMenuController implements Initializable {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
-		Scene scene = new Scene(root, (width/2.5), (height/1.5));
+		Scene scene = new Scene(root, (width / 2.5), (height / 1.5));
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Pedidos.css").toExternalForm());
 		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-	public void btnProductosPressed (ActionEvent event) throws IOException {
+		primaryStage.setTitle("Puerta a Puerta | Procesar orden");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		primaryStage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
 		
-		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		primaryStage.show();
+		}
+	}
+
+	public void btnProductosPressed(ActionEvent event) throws IOException {
+
+		Stage stage = (Stage) listViewCategorias.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/ProductosWindow.fxml"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -386,14 +435,14 @@ public class MainMenuController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Productos.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
 	}
 
-	public void btnConfigPressed (ActionEvent event) throws IOException{
-		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+	public void btnConfigPressed(ActionEvent event) throws IOException {
+		Stage stage = (Stage) listViewCategorias.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/ConfigWindow.fxml"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -401,14 +450,14 @@ public class MainMenuController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Config.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
 	}
-	
-	public void btnInventarioPressed(ActionEvent event) throws IOException{
-		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+
+	public void btnInventarioPressed(ActionEvent event) throws IOException {
+		Stage stage = (Stage) listViewCategorias.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/InventarioWindow.fxml"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -416,14 +465,14 @@ public class MainMenuController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Inventario.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
 	}
 
 	public void btnEstadisticasPressed(ActionEvent event) throws IOException {
-		Stage stage = (Stage)listViewCategorias.getScene().getWindow();
+		Stage stage = (Stage) listViewCategorias.getScene().getWindow();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/EstadisticasWindow.fxml"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -431,12 +480,12 @@ public class MainMenuController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Estadisticas.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
 	}
-	
+
 	public void btnCerrarSesionPressed(ActionEvent event) throws IOException {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirmacion");
@@ -452,19 +501,25 @@ public class MainMenuController implements Initializable {
 			double height = screenSize.getHeight();
 			Scene scene = new Scene(root, width, height);
 			scene.getStylesheets().add(
-					getClass().getResource("application.css").toExternalForm());
+					getClass().getResource("Login.css").toExternalForm());
 			stage.setScene(scene);
 			stage.setMaximized(true);
 			stage.show();
-			Stage stage1 = (Stage)listViewCategorias.getScene().getWindow();
+			String dir = System.getProperty("user.dir");
+			try{
+			stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			stage.setTitle("Puerta a Puerta | Terminal de punto de venta (TPV)");
+			Stage stage1 = (Stage) listViewCategorias.getScene().getWindow();
 			stage1.close();
-			
-		}
-		else{
-			
+
+		} else {
+
 		}
 	}
-	
+
 	public void write() throws IOException {
 		FileOutputStream fout = null;
 		ObjectOutputStream oos = null;

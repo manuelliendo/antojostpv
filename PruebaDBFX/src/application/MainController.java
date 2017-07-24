@@ -18,7 +18,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -56,31 +59,43 @@ public class MainController implements Initializable {
 			}
 			if(UsuarioExiste)
 			{
+				Usuario.setNombreUsuario(textFieldUsuario.getText());
+				Usuario.setPermiso(acceso);
 				Stage primaryStage  = new Stage();
 				Parent root = FXMLLoader.load(getClass().getResource("/application/MainMenu.fxml"));
 				Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 				double width = screenSize.getWidth();
 				double height = screenSize.getHeight();
 				Scene scene = new Scene(root,width,height-50);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				scene.getStylesheets().add(getClass().getResource("Pedidos.css").toExternalForm());
 				primaryStage.setScene(scene);
+//				primaryStage.setResizable(false);
 				primaryStage.setMaximized(true);
+				primaryStage.setTitle("Puerta a Puerta | Terminal de punto de venta (TPV)");
+				try{
+					String dir = System.getProperty("user.dir");
+//					System.out.println(dir + "\\icon.png");
+				primaryStage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+				
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 				primaryStage.show();
+				
 				Stage stage = (Stage) textFieldUsuario.getScene().getWindow();
 			    stage.close();
 			}
 			else{
-				Stage primaryStage  = new Stage();
-				Parent root = FXMLLoader.load(getClass().getResource("/application/LoginFailed.fxml"));
-				Scene scene = new Scene(root,300,150);
-				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				primaryStage.setScene(scene);
-				primaryStage.show();
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("Error de acceso");
+				alert.setContentText("Usuario o contraseña incorrectos");
+				alert.showAndWait();
 			}
 			
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			// TODO: handle exception
 		}
 		finally{
@@ -88,7 +103,7 @@ public class MainController implements Initializable {
 				rs.close();
 				pst.close();
 			} catch (Exception e2) {
-				System.out.println(e2);
+				e2.printStackTrace();
 				// TODO: handle exception
 			}
 		}

@@ -12,17 +12,66 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EstadisticasWindowController">
+<AnchorPane id="backGround" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EstadisticasWindowController">
    <children>
-      <HBox layoutX="41.0" prefHeight="50.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox maxHeight="-Infinity" prefHeight="35.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#btnPedidosPressed" text="PEDIDOS" />
-            <Button mnemonicParsing="false" onAction="#btnProductosPressed" text="PRODUCTOS" />
-            <Button mnemonicParsing="false" onAction="#btnInventarioPressed" text="INVENTARIO" />
-            <Button mnemonicParsing="false" text="ESTADISTICAS" />
-            <Button mnemonicParsing="false" text="PUERTA A PUERTA" />
-            <Button mnemonicParsing="false" onAction="#btnConfigPressed" text="CONFIGURACION" />
+            <AnchorPane maxHeight="-Infinity" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnPedidos" alignment="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#btnPedidosPressed" prefHeight="35.0" text="PEDIDOS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="563.0" layoutY="10.0" maxHeight="-Infinity" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnProductos" maxHeight="-Infinity" mnemonicParsing="false" onAction="#btnProductosPressed" prefHeight="35.0" text="PRODUCTOS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="563.0" layoutY="10.0" maxHeight="-Infinity" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnInventarios" maxHeight="-Infinity" mnemonicParsing="false" onAction="#btnInventarioPressed" prefHeight="35.0" text="INVENTARIO" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="963.0" layoutY="10.0" maxHeight="-Infinity" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnEstadisticas" maxHeight="-Infinity" mnemonicParsing="false" prefHeight="35.0" text="ESTADISTICAS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1025.0" layoutY="10.0" maxHeight="-Infinity" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnPaP" maxHeight="-Infinity" mnemonicParsing="false" prefHeight="35.0" text="PUERTA A PUERTA" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="1043.0" layoutY="10.0" maxHeight="-Infinity" prefHeight="35.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="btnConfig" maxHeight="-Infinity" mnemonicParsing="false" onAction="#btnConfigPressed" prefHeight="35.0" text="CONFIGURACION" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
@@ -43,6 +92,9 @@
                            </HBox.margin>
                         </DatePicker>
                      </children>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="429.0">
                      <children>
@@ -64,20 +116,30 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#PopulateBarChart" text="Mostrar estadisticas">
+                        <Button fx:id="btnMostrarEstadisticas" mnemonicParsing="false" onAction="#PopulateBarChart" text="Mostrar estadisticas">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
                   </HBox>
+                  <Region prefHeight="200.0" prefWidth="200.0" />
                   <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="200.0">
                      <children>
                         <Label text="Total Ingresos: ">
                            <HBox.margin>
                               <Insets left="20.0" />
-                           </HBox.margin></Label>
-                        <Label fx:id="totalIngresos" text="0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <Label fx:id="labelTotalIngresos" text="0">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="85.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="200.0">
@@ -85,8 +147,14 @@
                         <Label text="Total clientes: ">
                            <HBox.margin>
                               <Insets left="20.0" />
-                           </HBox.margin></Label>
-                        <Label fx:id="totalClientes" text="0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <Label fx:id="labelTotalClientes" text="0">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="119.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="200.0">
@@ -94,8 +162,14 @@
                         <Label text="Dia con mas clientes: ">
                            <HBox.margin>
                               <Insets left="20.0" />
-                           </HBox.margin></Label>
-                        <Label fx:id="maxClientes" text="0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <Label fx:id="labelMaxClientes" text="0">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="153.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="200.0">
@@ -103,8 +177,14 @@
                         <Label text="Dia con menos clientes: ">
                            <HBox.margin>
                               <Insets left="20.0" />
-                           </HBox.margin></Label>
-                        <Label fx:id="minClientes" text="0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <Label fx:id="labelMinClientes" text="0">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="187.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="200.0">
@@ -113,8 +193,14 @@
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </Label>
-                        <Label fx:id="productoMasVendido" text="0" />
+                        <Label fx:id="labelProductoMasVendido" text="0">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="221.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="200.0">
@@ -123,8 +209,14 @@
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </Label>
-                        <Label fx:id="productoMenosVendido" text="0" />
+                        <Label fx:id="labelProductoMenosVendido" text="0">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                </children>
@@ -144,16 +236,22 @@
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </Label>
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <ComboBox fx:id="comboboxEstadistica" minWidth="-Infinity" prefWidth="150.0">
+                        <ComboBox fx:id="comboboxEstadistica" minWidth="-Infinity" onAction="#PopulateBarChart" prefWidth="150.0">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                         </ComboBox>
                      </children>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
                   </HBox>
-                  <BarChart fx:id="barChartProductos" animated="false" prefHeight="400.0" prefWidth="553.0">
+                  <BarChart fx:id="barChartProductos" animated="false" prefHeight="429.0" prefWidth="660.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

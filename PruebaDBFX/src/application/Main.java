@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /*MAIN ANTOJOS TPV*/
@@ -20,11 +21,20 @@ public class Main extends Application {
 			double height = screenSize.getHeight();
 			Scene scene = new Scene(root,width,height-75);
 			
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
+//			primaryStage.setMaximized(true);
+			primaryStage.setTitle("Puerta a Puerta | Terminal de punto de venta (TPV)");
+			try{
+				String dir = System.getProperty("user.dir");
+//				System.out.println(dir + "\\icon.png");
+			primaryStage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
 			
-			primaryStage.setMaximized(true);
-			primaryStage.setTitle("Innbol TPV-Restaurant");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

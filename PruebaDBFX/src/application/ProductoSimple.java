@@ -2,15 +2,13 @@ package application;
 
 import java.io.Serializable;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class ProductoSimple implements Serializable{
 	private String nombre = "";
 	private Float precio = null;
 	private Integer cantidad=1;
 	private Float precioTotal = null;
-	private String especial = "";
+	private String especial = "sin especial";
 	
 	public ProductoSimple(String nombre, Float precio) {
 		super();

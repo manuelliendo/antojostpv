@@ -2,16 +2,13 @@ package application;
 
 public class SFC {
 
-	public static void EmiteCodigo(){
-		String llaveDosificacion = "$E9K+%V+I5JZjj#A}pdpM2jJPd@puu=tkWVPz+TrtEg)F3}dDk@@(q[Mr8_drId+";
-		String nAutorizacion = 		"1904003408093";
-		String nFactura = "722443";
-		String nit = "1627097";
-		String fechaTrans = "20080904";
-		String montoTrans = "7609";
+	public static String EmiteCodigo(String nAutorizacion, String nFactura, String nit, String fechaTrans
+			,String montoTrans,String llaveDosificacion){
+		String cControl = "";
 		String codigoControl = CodigoControl(nFactura, nit, fechaTrans, montoTrans, llaveDosificacion,
 				nAutorizacion);
-		Imprime(codigoControl);
+		cControl = Imprime(codigoControl);
+		return cControl;
 	}
 	public static String CodigoControl(String nFactura, String nit,
 			String fechaTrans, String montoTrans, String llaveDosificacion,
@@ -216,16 +213,26 @@ public class SFC {
 		return palabra;
 	}
 
-	public static void Imprime (String codigo){
-		String codigoAux="";
-	for(int i=0; i<codigo.length();i++){
-		codigoAux += codigo.charAt(i);
-		if((i+1)%2 == 0)
-		{
-			codigoAux += "-";
+	public static String Imprime (String codigo){
+		String codigoAux = "";
+		int c = 0;
+		for (int i = 0; i < codigo.length(); i++) {
+			codigoAux += codigo.charAt(i);
+			if (codigo.length() == 10) {
+				if (((i + 1) % 2 == 0) && (c < 4)) {
+					codigoAux += "-";
+					c++;
+				}
+			}
+			if (codigo.length() == 8) {
+				if (((i + 1) % 2 == 0) && (c < 3)) {
+					codigoAux += "-";
+					c++;
+				}
+			}
+
 		}
-	}
-	System.out.println(codigoAux);
+		return codigoAux;
 	}
 
 }

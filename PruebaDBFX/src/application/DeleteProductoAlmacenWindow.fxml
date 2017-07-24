@@ -12,7 +12,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DeleteProductoAlmacenWindowController">
    <children>
-      <VBox prefHeight="146.0" prefWidth="230.0">
+      <VBox id="backGround" prefHeight="146.0" prefWidth="230.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="300.0">
                <children>
@@ -34,7 +34,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <ComboBox fx:id="comboboxProducto" minWidth="-Infinity" prefWidth="150.0">
+                  <ComboBox id="comboBox1" fx:id="comboboxProducto" minWidth="-Infinity" prefWidth="150.0">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
@@ -43,7 +43,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" prefHeight="46.0" prefWidth="300.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#BtnGuardarPressed" text="Borrar">
+                  <Button id="btn2" mnemonicParsing="false" onAction="#BtnGuardarPressed" text="Borrar">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>

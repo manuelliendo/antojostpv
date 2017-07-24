@@ -1,0 +1,68 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*--------------------------------------------------- */
+/*PEDIDOS */
+
+#backGround{
+	-fx-background-color: white;
+}
+
+#tableViewInventario{
+	-fx-border-color: rgb(128.0,24.0,21.0);
+	-fx-font-size: 12.0pt;
+}
+#tableViewInventario .column-header {
+	-fx-background-color: rgb(168.0,47.0,22.0);
+	-fx-border-width: 1px;
+	-fx-border-color:  rgb(128.0,24.0,21.0);
+}
+#tableViewInventario .column-header .label{
+	-fx-text-fill: white;
+}
+
+#btnAgregarProducto,#btnEditarProducto,#btnEliminarProducto{
+		-fx-background-color: rgb(20.0,141.0,204.0) !important;
+}
+#btnPedidos{
+	-fx-text-fill:white !important;
+	 -fx-background-color: rgb(128,24,21) !important;
+}
+#btnPedidos:hover{
+	-fx-text-fill:white !important;
+	 -fx-background-color: rgb(168,64,61) !important;
+}
+#btnProductos{
+	-fx-background-color:rgb(20,141,204) !important; 
+	-fx-text-fill: white !important;
+}
+#btnProductos:hover{
+	-fx-background-color:rgb(60,181,244) !important; 
+	-fx-text-fill: white !important;
+}
+#btnInventarios{
+	-fx-text-fill:rgb(162,131,86) !important; 
+	 -fx-background-color:white !important;
+}
+#btnEstadisticas{
+	-fx-background-color: rgb(178,18,31) !important; 
+	-fx-text-fill: white !important;
+}
+#btnEstadisticas:hover{
+	-fx-background-color: rgb(218,58,71) !important; 
+	-fx-text-fill: white !important;
+}
+#btnPaP{
+	-fx-background-color: rgb(91,64,10) !important; 
+	-fx-text-fill: white !important;
+}
+#btnPaP:hover{
+	-fx-background-color: rgb(131,104,50) !important; 
+	-fx-text-fill: white !important;
+}
+#btnConfig{
+	-fx-background-color: rgb(27,127,178) !important; 
+	-fx-text-fill: white !important;
+}
+#btnConfig:hover{
+	-fx-background-color: rgb(77,167,218) !important; 
+	-fx-text-fill: white !important;
+}

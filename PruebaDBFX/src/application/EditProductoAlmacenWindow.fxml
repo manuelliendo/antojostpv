@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="327.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditProductoAlmacenWindowController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox id="backGround" prefHeight="200.0" prefWidth="100.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="300.0">
                <children>
@@ -35,7 +35,7 @@
                      </HBox.margin>
                   </Label>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <ComboBox fx:id="comboboxProducto" minWidth="-Infinity" onAction="#PopulateLista" prefWidth="150.0">
+                  <ComboBox id="comboBox1" fx:id="comboboxProducto" minWidth="-Infinity" onAction="#PopulateLista" prefWidth="150.0">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
@@ -134,7 +134,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" prefHeight="46.0" prefWidth="300.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#BtnGuardarPressed" text="Guardar">
+                  <Button id="btn2" mnemonicParsing="false" onAction="#BtnGuardarPressed" text="Guardar">
                      <HBox.margin>
                         <Insets right="25.0" />
                      </HBox.margin>

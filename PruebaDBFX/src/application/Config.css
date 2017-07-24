@@ -1,0 +1,57 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*--------------------------------------------------- */
+/*PEDIDOS */
+
+#backGround{
+	-fx-background-color: white;
+}
+
+
+#btnGestionUsuarios,#btnGestionFactura,#btnGestionImpresora{
+	-fx-background-color: rgb(20.0,141.0,204.0) !important;
+}
+
+#btnPedidos{
+	-fx-text-fill:white !important;
+	 -fx-background-color: rgb(128,24,21) !important;
+}
+#btnPedidos:hover{
+	-fx-text-fill:white !important;
+	 -fx-background-color: rgb(168,64,61) !important;
+}
+#btnProductos{
+	-fx-background-color:rgb(20,141,204) !important; 
+	-fx-text-fill: white !important;
+}
+#btnProductos:hover{
+	-fx-background-color:rgb(60,181,244) !important; 
+	-fx-text-fill: white !important;
+}
+#btnInventarios{
+	-fx-background-color:rgb(162,131,86) !important; 
+	 -fx-text-fill:white !important;
+}
+#btnInventarios:hover{
+	-fx-background-color:rgb(162,131,86) !important; 
+	 -fx-text-fill: white !important;
+}
+#btnEstadisticas{
+	 -fx-background-color: rgb(178,18,31) !important; 
+	-fx-text-fill: white !important;
+}
+#btnEstadisticas:hover{
+	-fx-background-color: rgb(218,58,71) !important; 
+	-fx-text-fill: white !important;
+}
+#btnPaP{
+	-fx-background-color: rgb(91,64,10) !important; 
+	-fx-text-fill: white !important;
+}
+#btnPaP:hover{
+	-fx-background-color: rgb(131,104,50) !important; 
+	-fx-text-fill: white !important;
+}
+#btnConfig{
+	-fx-text-fill: rgb(27,127,178) !important; 
+	 -fx-background-color:white !important;
+}

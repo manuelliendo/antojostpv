@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,6 +28,16 @@ import javafx.stage.Stage;
 
 public class InventarioWindowController implements Initializable {
 
+	@FXML
+	Button btnProductos;
+	@FXML
+	Button btnInventarios;
+	@FXML
+	Button btnEstadisticas;
+	@FXML
+	Button btnPaP;
+	@FXML
+	Button btnConfig;
 	@FXML
 	TableView<Almacen> tableViewInventario;
 	@FXML
@@ -50,6 +61,16 @@ public class InventarioWindowController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		if(Usuario.getPermiso() == 2){
+			btnConfig.setDisable(true);
+			
+		}else{
+			if(Usuario.getPermiso() == 3){
+				btnConfig.setDisable(true);
+				btnProductos.setDisable(true);
+				btnEstadisticas.setDisable(true);
+				}
+		}
 		PopulateTabla();
 	}
 
@@ -63,7 +84,7 @@ public class InventarioWindowController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Productos.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
@@ -78,7 +99,7 @@ public class InventarioWindowController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height - 50);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Pedidos.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setMaximized(true);
 		primaryStage.show();
@@ -93,7 +114,7 @@ public class InventarioWindowController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Config.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
@@ -108,7 +129,7 @@ public class InventarioWindowController implements Initializable {
 		double height = screenSize.getHeight();
 		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Estadisticas.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setMaximized(true);
 		stage.show();
@@ -145,40 +166,67 @@ public class InventarioWindowController implements Initializable {
 		}
 	}
 
-	public void btnAgregarProducto(ActionEvent event) throws IOException {
+	public void btnAgregarProductoPressed(ActionEvent event) throws IOException {
 
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/AddProductoAlmacenWindow.fxml"));
 		Scene scene = new Scene(root, 300, 400);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Agregar producto a almacen");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.showAndWait();
 		PopulateTabla();
 	}
 
-	public void btnEditarProducto(ActionEvent event) throws IOException {
+	public void btnEditarProductoPressed(ActionEvent event) throws IOException {
 
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/EditProductoAlmacenWindow.fxml"));
-		Scene scene = new Scene(root, 300, 400);
+		Scene scene = new Scene(root, 300, 330);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Actualizar producto de almacen");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.showAndWait();
 		PopulateTabla();
 	}
 
-	public void btnEliminarProducto(ActionEvent event) throws IOException {
+	public void btnEliminarProductoPressed(ActionEvent event) throws IOException {
 
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource(
 				"/application/DeleteProductoAlmacenWindow.fxml"));
-		Scene scene = new Scene(root, 300, 400);
+		Scene scene = new Scene(root, 230, 150);
 		scene.getStylesheets().add(
-				getClass().getResource("application.css").toExternalForm());
+				getClass().getResource("Add.css").toExternalForm());
+		stage.setTitle("Eliminar producto de almacen");
+		try{
+			String dir = System.getProperty("user.dir");
+//			System.out.println(dir + "\\icon.png");
+		stage.getIcons().add(new Image("file:" + dir + "\\icon.png"));
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		stage.setScene(scene);
 		stage.showAndWait();
 		PopulateTabla();

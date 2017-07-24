@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.print.PrinterException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.List;
@@ -15,13 +17,20 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import com.google.zxing.WriterException;
@@ -51,6 +60,10 @@ public class FacturaController implements Initializable {
 	Label labelTotal;
 	@FXML
 	Label labelCambio;
+	@FXML
+	RadioButton radioButtonEfectivo;
+	@FXML
+	RadioButton radioButtonTarjeta;
 	ObservableList<ProductoSimple> orden = FXCollections.observableArrayList();
 	Float auxCuenta = (float) 0;
 	Float auxCambio = (float) 0;
@@ -58,11 +71,18 @@ public class FacturaController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
+		textFieldMontoPagado.textProperty().addListener((observable, oldValue, newValue) -> {
+			if (!newValue.matches("[.\\d*]")) {
+                textFieldMontoPagado.setText(newValue.replaceAll("[^\\d.]", ""));
+                
+            }
+			getCambio();
+		});
 		try {
 			read();
 		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} finally {
 			tableViewOrdenTotal.setItems(orden);
@@ -81,38 +101,108 @@ public class FacturaController implements Initializable {
 		labelTotal.setText(String.valueOf(auxCuenta));
 	}
 
+	public void addCliente(ActionEvent event){
+		pst = null;
+		rs = null;
+		conn = null;
+		conn = ConnectionDB.Conectar();
+		
+		String query2 = "INSERT INTO Cliente (Nit,Razon_social) VALUES (? ,?)";
+		
+		try {
+			pst = conn.prepareStatement(query2);
+			pst.setString(1, textFieldNit.getText());
+			pst.setString(2, textfieldNombre.getText());
+			pst.executeUpdate();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Configuración de usuario");
+			alert.setHeaderText("Éxito");
+			alert.setContentText("Cliente guardado");
+			alert.showAndWait();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	public void getNit() {
-		// TODO buscar en base de datos usuario con el nit, sino insert en la bd
 		pst = null;
 		rs = null;
 		conn = null;
 		conn = ConnectionDB.Conectar();
 		String query = "SELECT Razon_Social FROM Cliente WHERE (Cliente.Nit = ?)";
-		String query2 = "INSERT INTO Cliente (Nombre,Apellido,Direccion,Email,User,Nit,Razon_Social,Referencia_Direccion,Telefono) VALUES ('John','Doe','Calle 2 Zona 2 # 321','mail1@mail.com','JohnDoe','123456','Doe','casa gris','69512345')";
 		try {
-
 			pst = conn.prepareStatement(query);
 			pst.setString(1, textFieldNit.getText());
 			rs = pst.executeQuery();
+		
 			while (rs.next()) {
 
 				textfieldNombre.setText(rs.getString("Razon_Social"));
 			}
-
 		} catch (Exception e) {
 		}
 
 	}
+	
+	public void emitirFactura() throws ClassNotFoundException, IOException, WriterException, PrinterException {
+		int opcionMetodo;
+		if(textFieldNit.getText().isEmpty() || textfieldNombre.getText().isEmpty())
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Error");
+			alert.setContentText("Por favor ingrese el NIT y la razón social");
+			alert.showAndWait();
+		}
+		else{
+		if(!radioButtonEfectivo.isSelected() && !radioButtonTarjeta.isSelected())
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Error");
+			alert.setContentText("Por favor seleccione el método de pago");
+			alert.showAndWait();
+		}else{
+		if(radioButtonEfectivo.isSelected())
+		{
+			opcionMetodo = 0;
+		}else{
+			opcionMetodo = 1;
+		}
+		if(textFieldMontoPagado.getText().isEmpty()){
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Error");
+			alert.setContentText("Ingrese el monto a ser pagado");
+			alert.showAndWait();
+		}else{
+			double aux = Double.valueOf(labelCambio.getText());
+			if(aux<0)
+			{
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("Error");
+				alert.setContentText("El pago debe ser mayor o igual al monto");
+				alert.showAndWait();
+			}
+			else{
+			EmisionFactura.Emitir(textFieldNit.getText(), textfieldNombre.getText(), labelTotal.getText(),textFieldMontoPagado.getText(),labelCambio.getText(),Usuario.getNombreUsuario());
+			Estadisticas e = new Estadisticas();
+			try {
+				e.GuardarEstadisticas(opcionMetodo, labelTotal.getText(), orden);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			Stage stage = (Stage) textFieldNit.getScene().getWindow();
 
-	public void emitirFactura() throws ClassNotFoundException, IOException, WriterException {
-		// TODO: imprimir factura
-		// TODO: facturacion electronica
-		// TODO: subir a base de datos
-		EmisionFactura.Emitir(textFieldNit.getText(), textfieldNombre.getText(), labelTotal.getText(),textFieldMontoPagado.getText(),labelCambio.getText(),"cajero");
-		Stage stage = (Stage) textFieldNit.getScene().getWindow();
-
-		orden.clear();
-		stage.close();
+			orden.clear();
+			stage.close();
+			}
+			}
+		}
+		}
 	}
 
 	public void getCambio() {
@@ -144,6 +234,5 @@ public class FacturaController implements Initializable {
 
 	}
 
-
-
+	
 }
